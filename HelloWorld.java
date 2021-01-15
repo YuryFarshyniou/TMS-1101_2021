@@ -3,5 +3,5 @@ class HelloWorld {
 
    public static void main(String [] args) {
 
-         System.out.println("Hello World!" + " and " +  " Hello Yura!");
+         System.out.println("Hello World!" + " and " + "My name is " + args[3]);
 }}
