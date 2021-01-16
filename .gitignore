@@ -6,6 +6,8 @@
 
 *.iml
 
+/.idea
+
 *.xml
 
 # BlueJ files
