@@ -5,19 +5,21 @@ package Tasks;
  */
 
 import java.io.*;
-import java.util.Arrays;
 
 public class Task_4 {
     public static void main(String[] args) throws IOException {
-BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-int arr[] = new int[4];
-        int number =Integer.parseInt(reader.readLine()) ;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int[] arr = new int[4];
+        int number = Integer.parseInt(reader.readLine());
         for (int i = 0; i < arr.length; i++) {
-            int n = (number/10)%10;
-            arr[i]=n;
+            int n = (number % 10);
+            arr[i] = n;
+            number /= 10;
+
         }
-        System.out.println(Arrays.toString(arr));
-
-
+        for (int num :
+                arr) {
+            System.out.print(num);
+        }
     }
 }
