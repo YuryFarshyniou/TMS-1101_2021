@@ -11,7 +11,10 @@ public class Task_4 {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         int number = Integer.parseInt(reader.readLine());
-        System.out.println("The new number is: " + number%10 + number/10%10 + number/100%10 + number/1000%10);
+        int s = (number%10)*1000 +(number/10%10)*100 +(number/100%10)*10 + number/1000%10   ;
+        System.out.println(s);
+
+
 
     }
 }
