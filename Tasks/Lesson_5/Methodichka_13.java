@@ -14,7 +14,7 @@ public class Methodichka_13 {
             array[i] = rand.nextInt(20) + 1;
             if (array[i] > max) max = array[i];
         }
-        System.out.println("Our array: " + Arrays.toString(array));
-        System.out.println("The max element in our array: " + max);
+        System.out.println("Our sequence: " + Arrays.toString(array));
+        System.out.println("The max element in our sequence: " + max);
     }
 }

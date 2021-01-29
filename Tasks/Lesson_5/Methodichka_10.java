@@ -3,10 +3,15 @@ package Tasks.Lesson_5;
 
 public class Methodichka_10 {
     public static void main(String[] args) {
-        int count = 1;
-        for (int i = 10; i < 15; i++) {
-            count *= i;
+        int number = 10;
+
+        while (number < 16) {
+            long factorial = 1;
+            for (int i = 1; i <= number; i++) {
+                factorial *= i;
+            }
+            System.out.println("The factorial of number " + number + " is " + factorial);
+            number++;
         }
-        System.out.println("The factorial is: "+count);
     }
 }

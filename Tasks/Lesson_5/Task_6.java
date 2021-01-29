@@ -8,7 +8,6 @@ public class Task_6 {
             if (i % 2 != 0) {
                 sumOfOddNumbers += i;
             }
-            System.out.println(i);
         }
         System.out.println("The sum of odd numbers: " + sumOfOddNumbers);
     }

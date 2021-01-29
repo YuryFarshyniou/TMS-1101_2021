@@ -25,6 +25,7 @@ public class Methodichka_17 {
             ns++;
         }
 
+// Выводим массив
 
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {

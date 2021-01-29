@@ -12,13 +12,12 @@ public class Methodichka_11 {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter the number: ");
         int number = Integer.parseInt(reader.readLine());
-        int count=0;
+        int count = 0;
         for (int i = 2; i < number; i++) {
             if (number % i == 0) {
-                count ++;
+                count++;
             }
         }
-        System.out.println((count>0) ?number + " Isn't a simple number.": number + " Is a simple number.");
-
+        System.out.println((count > 0) ? number + " - Isn't a simple number." : number + " - Is a simple number.");
     }
 }

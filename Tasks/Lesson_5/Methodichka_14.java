@@ -10,20 +10,20 @@ import java.util.Random;
 
 public class Methodichka_14 {
     public static void main(String[] args) {
-Random rand = new Random();
-int [] array = new int[rand.nextInt(9)+2];
-int max=0;
-int maxIndex = 0;
-int min=10;
-int minIndex = 0;
+        Random rand = new Random();
+        int[] array = new int[rand.nextInt(9) + 2];
+        int max = 0;
+        int maxIndex = 0;
+        int min = 10;
+        int minIndex = 0;
         for (int i = 0; i < array.length; i++) {
-            array[i]=rand.nextInt(10);
+            array[i] = rand.nextInt(10);
 
-            if(array[i]>max){
-                max=array[i];
+            if (array[i] > max) {
+                max = array[i];
                 maxIndex = i;
             }
-            if(array[i]<=min){
+            if (array[i] <= min) {
                 min = array[i];
                 minIndex = i;
             }
