@@ -13,11 +13,16 @@ public class Methodichka_11 {
         System.out.println("Enter the number: ");
         int number = Integer.parseInt(reader.readLine());
         int count = 0;
-        for (int i = 2; i < number; i++) {
-            if (number % i == 0) {
-                count++;
+        if (number == 0 || number == 1) {
+            System.out.println(number + " - Isn't a simple number.");
+        } else {
+            for (int i = 0; i < number; i++) {
+                if (i == 0) continue;
+                if (number % i == 0 && i!=1) {
+                    count++;
+                }
             }
+            System.out.println((count > 0) ? number + " - Isn't a simple number." : number + " - Is a simple number.");
         }
-        System.out.println((count > 0) ? number + " - Isn't a simple number." : number + " - Is a simple number.");
     }
 }

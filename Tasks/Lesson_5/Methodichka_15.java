@@ -22,8 +22,8 @@ public class Methodichka_15 {
         }
         System.out.println(" ");
 
-        int s = 0;
-        s = array.length / 2;
+
+        int s = array.length / 2;
         for (int i = 0; i < array.length; i++) {
             if (i == s) break;
             int temp = array[i];
