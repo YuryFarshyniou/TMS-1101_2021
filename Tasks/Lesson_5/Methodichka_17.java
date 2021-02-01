@@ -7,10 +7,9 @@ import java.util.Scanner;
 public class Methodichka_17 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the size of matrix: ");
         int n = sc.nextInt();
         int[][] array = new int[n][n];
-        int count = n / 2;
-
 
         for (int i = 0; i < array.length; i++) {
             for (int k = i; k < array[i].length - i; k++) {
@@ -33,6 +32,5 @@ public class Methodichka_17 {
             }
             System.out.println(" ");
         }
-
     }
 }
