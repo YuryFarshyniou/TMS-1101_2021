@@ -13,11 +13,9 @@ public class Methodichka_12 {
         int n = Integer.parseInt(reader.readLine());
         int maxNumber = 3 * n;
         int count = 0;
-        for (int i = 1; i <= maxNumber; i++) {
-            if (i % 3 == 0) {
-                count += i;
-                System.out.println("The number is: " + i);
-            }
+        for (int i = 3; i <= maxNumber; i+=3) {
+            count+=i;
+            System.out.println("I is: " + i);
         }
         System.out.println("The sum is: " + count);
     }

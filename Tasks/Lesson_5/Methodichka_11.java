@@ -16,9 +16,8 @@ public class Methodichka_11 {
         if (number == 0 || number == 1) {
             System.out.println(number + " - Isn't a simple number.");
         } else {
-            for (int i = 0; i < number; i++) {
-                if (i == 0) continue;
-                if (number % i == 0 && i!=1) {
+            for (int i = 2; i < number; i++) {
+                if (number % i == 0 ) {
                     count++;
                 }
             }
