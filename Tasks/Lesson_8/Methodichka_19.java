@@ -16,7 +16,7 @@ public class Methodichka_19 {
         System.out.println("Enter any string: ");
         String anyString = reader.readLine();
         String regex = "\\w+";
-        Pattern pattern = Pattern.compile(regex);
+        Pattern pattern = Pattern.compile(regex,Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(anyString);
         int wordsCount = 0;
         while (matcher.find()) {

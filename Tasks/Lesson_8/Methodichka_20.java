@@ -6,6 +6,7 @@ package Tasks.Lesson_8;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,7 +17,7 @@ public class Methodichka_20 {
         String anyString = reader.readLine();
         String regex = "\\w\\b";
         StringBuilder stringBuilder = new StringBuilder();
-        Pattern pattern = Pattern.compile(regex);
+        Pattern pattern = Pattern.compile(regex,Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(anyString);
         while (matcher.find()) {
             stringBuilder.append(matcher.group());
