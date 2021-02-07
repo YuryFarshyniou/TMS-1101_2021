@@ -22,6 +22,7 @@ public class Methodichka_19 {
         while (matcher.find()) {
             wordsCount++;
         }
+
         System.out.println("The amount of words in our string: " + wordsCount);
     }
 }

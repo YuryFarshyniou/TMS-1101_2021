@@ -22,6 +22,7 @@ public class Methodichka_20 {
         while (matcher.find()) {
             stringBuilder.append(matcher.group());
         }
+
         System.out.println(stringBuilder);
     }
 }
