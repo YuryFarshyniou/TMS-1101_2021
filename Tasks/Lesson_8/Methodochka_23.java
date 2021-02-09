@@ -13,7 +13,7 @@ public class Methodochka_23 {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter any string: ");
         String anyString = reader.readLine();
-        String regex = "<\\/?p.+?>";
+        String regex = "<\\/?p.*?>";
         anyString = anyString.replaceAll(regex, "<p>");
         System.out.println(anyString);
     }
