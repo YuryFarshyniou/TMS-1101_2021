@@ -1,4 +1,4 @@
-package Tasks.Lesson_10.Metodichka_27.RealCard;
+package Tasks.Lesson_10.Metodichka_27.realcard;
 
 import Tasks.Lesson_10.Metodichka_27.Card;
 

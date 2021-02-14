@@ -13,8 +13,7 @@ public class Time {
     private int hours;
     private int minutes;
     private int seconds;
-    int m;
-    int h;
+
 
     public int getSeconds() {
         return seconds;
@@ -44,6 +43,8 @@ public class Time {
     // Конструктор для часов,минут ,секунд.
 
     public Time(int seconds, int minutes, int hours) {
+        int m = 0;
+        int h = 0;
         this.seconds = seconds;
         if (seconds >= 60) {
             m = seconds / 60;

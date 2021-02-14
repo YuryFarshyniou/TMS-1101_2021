@@ -1,6 +1,6 @@
-package Tasks.Lesson_10.Metodichka_27.RealCard.UsuallyPaymentCard;
+package Tasks.Lesson_10.Metodichka_27.realcard.usuallypaymentcard;
 
-import Tasks.Lesson_10.Metodichka_27.RealCard.RealCard;
+import Tasks.Lesson_10.Metodichka_27.realcard.RealCard;
 
 public class UsuallyPaymentCard extends RealCard {
 

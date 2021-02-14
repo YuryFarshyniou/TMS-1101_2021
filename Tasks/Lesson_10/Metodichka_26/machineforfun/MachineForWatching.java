@@ -1,4 +1,4 @@
-package Tasks.Lesson_10.Metodichka_26.MachineForFun;
+package Tasks.Lesson_10.Metodichka_26.machineforfun;
 
 import Tasks.Lesson_10.Metodichka_26.Machine;
 

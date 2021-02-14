@@ -1,6 +1,4 @@
-package Tasks.Lesson_10.Metodichka_27.RealCard;
-
-import Tasks.Lesson_10.Metodichka_27.RealCard.UsuallyPaymentCard.UsuallyPaymentCard;
+package Tasks.Lesson_10.Metodichka_27.realcard;
 
 public class CreditCard extends RealCard {
 boolean nearBank;

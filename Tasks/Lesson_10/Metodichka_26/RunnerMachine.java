@@ -1,6 +1,6 @@
 package Tasks.Lesson_10.Metodichka_26;
 
-import Tasks.Lesson_10.Metodichka_26.MachineForWork.Grinder.Grinder;
+import Tasks.Lesson_10.Metodichka_26.machineforwork.grinder.Grinder;
 
 public class RunnerMachine {
     public static void main(String[] args) {

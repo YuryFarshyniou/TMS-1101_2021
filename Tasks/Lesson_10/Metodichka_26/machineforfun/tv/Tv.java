@@ -1,6 +1,8 @@
-package Tasks.Lesson_10.Metodichka_26.MachineForFun.TV;
+package Tasks.Lesson_10.Metodichka_26.machineforfun.tv;
 
-public class Tv {
+import Tasks.Lesson_10.Metodichka_26.machineforfun.MachineForWatching;
+
+public class Tv extends MachineForWatching {
     private String resolution;
     private int portsAmount;
     private int channel;

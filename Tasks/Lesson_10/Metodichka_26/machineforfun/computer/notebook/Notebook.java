@@ -1,6 +1,8 @@
-package Tasks.Lesson_10.Metodichka_26.MachineForFun.Computer.Notebook;
+package Tasks.Lesson_10.Metodichka_26.machineforfun.computer.notebook;
 
-public class Notebook {
+import Tasks.Lesson_10.Metodichka_26.machineforfun.computer.Computer;
+
+public class Notebook extends Computer {
     private boolean needCharge;
     private String processor;
     private int amountOfRam;
@@ -53,6 +55,4 @@ public class Notebook {
             this.needCharge = true;
         }
     }
-
-
 }

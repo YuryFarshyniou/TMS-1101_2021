@@ -1,6 +1,6 @@
-package Tasks.Lesson_10.Metodichka_26.MachineForFun.Computer.PC;
+package Tasks.Lesson_10.Metodichka_26.machineforfun.computer.pc;
 
-import Tasks.Lesson_10.Metodichka_26.MachineForFun.Computer.Computer;
+import Tasks.Lesson_10.Metodichka_26.machineforfun.computer.Computer;
 
 
 public class Pc extends Computer {

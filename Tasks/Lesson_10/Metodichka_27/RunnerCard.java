@@ -1,6 +1,6 @@
 package Tasks.Lesson_10.Metodichka_27;
 
-import Tasks.Lesson_10.Metodichka_27.RealCard.UsuallyPaymentCard.UsuallyPaymentCard;
+import Tasks.Lesson_10.Metodichka_27.realcard.usuallypaymentcard.UsuallyPaymentCard;
 
 public class RunnerCard {
     public static void main(String[] args) {

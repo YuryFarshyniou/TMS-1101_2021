@@ -1,6 +1,6 @@
-package Tasks.Lesson_10.Metodichka_26.MachineForWork.Perforator;
+package Tasks.Lesson_10.Metodichka_26.machineforwork.perforator;
 
-import Tasks.Lesson_10.Metodichka_26.MachineForWork.MachineForWork;
+import Tasks.Lesson_10.Metodichka_26.machineforwork.MachineForWork;
 
 public class Perforator extends MachineForWork {
     private int drillSize;

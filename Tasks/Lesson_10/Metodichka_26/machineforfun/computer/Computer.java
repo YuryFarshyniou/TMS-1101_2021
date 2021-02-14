@@ -1,6 +1,6 @@
-package Tasks.Lesson_10.Metodichka_26.MachineForFun.Computer;
+package Tasks.Lesson_10.Metodichka_26.machineforfun.computer;
 
-import Tasks.Lesson_10.Metodichka_26.MachineForFun.MachineForWatching;
+import Tasks.Lesson_10.Metodichka_26.machineforfun.MachineForWatching;
 
 public abstract class Computer extends MachineForWatching {
     String processor;

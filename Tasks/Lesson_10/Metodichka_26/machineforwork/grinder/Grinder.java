@@ -1,6 +1,6 @@
-package Tasks.Lesson_10.Metodichka_26.MachineForWork.Grinder;
+package Tasks.Lesson_10.Metodichka_26.machineforwork.grinder;
 
-import Tasks.Lesson_10.Metodichka_26.MachineForWork.MachineForWork;
+import Tasks.Lesson_10.Metodichka_26.machineforwork.MachineForWork;
 
 public class Grinder extends MachineForWork {
     private int grinderWheel;
