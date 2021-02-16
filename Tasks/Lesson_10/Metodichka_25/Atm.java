@@ -91,47 +91,41 @@ public class Atm {
             // Если купюр 100 в банкомате меньше чем мы хотим снять.
 
             int allHundred = 0;
+            int hundred = 0;
             int hundreds = sumToWithDraw / 100;
             if (this.numberOfHundred < hundreds) {
                 hundreds -= this.numberOfHundred;
                 allHundred = sumToWithDraw / 100 - hundreds;
                 this.numberOfHundred = 0;
             } else if (this.numberOfHundred > hundreds) {
+                hundred = hundreds;
                 this.numberOfHundred -= hundreds;
             } else {
-                this.numberOfHundred = hundreds;
-            }
-            int hundred = 0;
-            if (allHundred == 0 && this.numberOfHundred > hundreds) {
-                hundred = hundreds;
-            } else if (allHundred == 0 && this.numberOfFifty == hundreds) {
                 hundred = hundreds;
                 this.numberOfFifty = 0;
             }
 
+
             // Если купюр 50 в банкомате меньше, чем мы хотим снять.
 
             int allFifties = 0;
+            int fifty = 0;
             int fifties = (sumToWithDraw - hundred * 100) / 50;
             if (this.numberOfFifty < fifties) {
                 fifties -= this.numberOfFifty;
                 allFifties = (sumToWithDraw - hundred * 100) / 50 - fifties;
                 this.numberOfFifty = 0;
             } else if (this.numberOfFifty > fifties) {
+                fifty = fifties;
                 this.numberOfFifty -= fifties;
             } else {
-                this.numberOfFifty = fifties;
-            }
-            int fifty = 0;
-            if (allFifties == 0 && this.numberOfFifty > fifties) {
-                fifty = fifties;
-            } else if (allFifties == 0 && this.numberOfFifty == fifties) {
                 fifty = fifties;
                 this.numberOfFifty = 0;
             }
 
             // Если купюр 20 в банкомате меньше, чем мы хотим снять.
 
+            int twenty = 0;
             int allTwenties = 0;
             int twenties = (sumToWithDraw - (hundred * 100 + fifty * 50)) / 20;
             if (this.numberOfTwenty < twenties) {
@@ -139,18 +133,12 @@ public class Atm {
                 allTwenties = ((sumToWithDraw - (hundred * 100 + fifty * 50)) / 20) - twenties;
                 this.numberOfTwenty = 0;
             } else if (this.numberOfTwenty > twenties) {
+                twenty = twenties;
                 this.numberOfTwenty -= twenties;
             } else {
-                this.numberOfTwenty = twenties;
-            }
-            int twenty = 0;
-            if (allTwenties == 0 && this.numberOfTwenty > twenties) {
-                twenty = twenties;
-            } else if (allTwenties == 0 && this.numberOfTwenty == twenties) {
                 twenty = twenties;
                 this.numberOfTwenty = 0;
             }
-
 
             int sumOfCash = hundred * 100 + fifty * 50 + twenty * 20;
             int difference = sumToWithDraw - sumOfCash;
@@ -158,7 +146,7 @@ public class Atm {
             // Выводим результаты.
 
             if (sumOfCash == sumToWithDraw) {
-                System.out.println("We withdrew all  the money.");
+                System.out.println("We withdrew all the money.");
                 System.out.println("We withdrew " + twenty + " twenty, " + fifty + " fifty, " + hundred + " hundred.");
             } else if (sumOfCash < sumToWithDraw) {
 
