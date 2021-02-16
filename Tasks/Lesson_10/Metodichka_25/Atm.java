@@ -90,12 +90,10 @@ public class Atm {
 
             // Если купюр 100 в банкомате меньше чем мы хотим снять.
 
-            int allHundred = 0;
             int hundred = 0;
             int hundreds = sumToWithDraw / 100;
             if (this.numberOfHundred < hundreds) {
                 hundreds -= this.numberOfHundred;
-                allHundred = sumToWithDraw / 100 - hundreds;
                 this.numberOfHundred = 0;
             } else if (this.numberOfHundred > hundreds) {
                 hundred = hundreds;
@@ -105,15 +103,12 @@ public class Atm {
                 this.numberOfFifty = 0;
             }
 
-
             // Если купюр 50 в банкомате меньше, чем мы хотим снять.
 
-            int allFifties = 0;
             int fifty = 0;
             int fifties = (sumToWithDraw - hundred * 100) / 50;
             if (this.numberOfFifty < fifties) {
                 fifties -= this.numberOfFifty;
-                allFifties = (sumToWithDraw - hundred * 100) / 50 - fifties;
                 this.numberOfFifty = 0;
             } else if (this.numberOfFifty > fifties) {
                 fifty = fifties;
@@ -126,11 +121,9 @@ public class Atm {
             // Если купюр 20 в банкомате меньше, чем мы хотим снять.
 
             int twenty = 0;
-            int allTwenties = 0;
             int twenties = (sumToWithDraw - (hundred * 100 + fifty * 50)) / 20;
             if (this.numberOfTwenty < twenties) {
                 twenties -= this.numberOfTwenty;
-                allTwenties = ((sumToWithDraw - (hundred * 100 + fifty * 50)) / 20) - twenties;
                 this.numberOfTwenty = 0;
             } else if (this.numberOfTwenty > twenties) {
                 twenty = twenties;
