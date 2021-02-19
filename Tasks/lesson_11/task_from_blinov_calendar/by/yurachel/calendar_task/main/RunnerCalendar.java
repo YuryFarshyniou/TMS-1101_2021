@@ -1,23 +1,35 @@
 package Tasks.lesson_11.task_from_blinov_calendar.by.yurachel.calendar_task.main;
 
 import Tasks.lesson_11.task_from_blinov_calendar.by.yurachel.calendar_task.entity.Calendar;
-
-import java.io.IOException;
+import Tasks.lesson_11.task_from_blinov_calendar.by.yurachel.calendar_task.logic.Add;
+import Tasks.lesson_11.task_from_blinov_calendar.by.yurachel.calendar_task.logic.Sort;
+import Tasks.lesson_11.task_from_blinov_calendar.by.yurachel.calendar_task.view.Show;
 
 public class RunnerCalendar {
-    public static void main(String[] args) throws IOException {
-        Calendar c = new Calendar(2020, 365, "Saturday");
+    public static void main(String[] args) throws Exception {
+        Calendar c = new Calendar(2020, 365);
+        Sort sort = new Sort();
+        Add add = new Add();
 
         // Дни недели.
 
-        c.setWeekends(c.new Weekend());
-//        c.getWeekends().weekends();
-//        c.getWeekends().showWeekends();
+//        c.setWeekends(c.new Weekend("Sunday"));
+//        add.addWeekends(c);
+//        Show.showWeekends(c, c.getWeekends().getWeekend());
 
         // Праздники.
 
-        c.setHoliday(c.new Holiday());
-//        c.getHoliday().addHoliday();
-//        c.getHoliday().showHoliday();
+        add.addHoliday(c, "New Year", 1);
+        add.addHoliday(c, "March 8", 50);
+        add.addHoliday(c, "Yurachel's birthday", 120);
+        add.addHoliday(c, "February 23", 42);
+        add.addHoliday(c, "Easter", 130);
+        add.addHoliday(c, "September 1", 264);
+
+        Show.showHoliday(c.getHolidayList());
+        sort.sortHolidays(c.getHolidayList(), "Ascending");
+        System.out.println("************************************************");
+        Show.showHoliday(c.getHolidayList());
+
     }
 }

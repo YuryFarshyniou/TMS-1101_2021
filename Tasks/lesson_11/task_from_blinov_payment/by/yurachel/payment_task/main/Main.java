@@ -9,16 +9,16 @@ public class Main {
 
         Payment p = new Payment();
         Purchases pur = new Purchases();
-        p.setCustomer(p.new Customer("AlfaBank", 56781234, true, 5000));
 
-        pur.isSupportingBank(p.getBanks(), p);
+        p.setCustomer(p.new Customer("AlfaBank", 56781234, true, 5000)); // Новый клиент.
 
-        pur.addPurchase(p.getPrices(),"PS5",700);
-        pur.addPurchase(p.getPrices(),"Sofa",300);
+        pur.isSupportingBank(p.getBanks(), p); // Может ли клиент оплатить своей картой.
 
-        pur.payment(p,p.getPrices());
+        pur.addPurchase(p.getPrices(), "PS5", 700);  // Добавляет в корзину покупки.
+        pur.addPurchase(p.getPrices(), "Sofa", 300);
 
-        System.out.println(p);
+        pur.payment(p, p.getPrices());  // Оплачиваем.
+
     }
 
 }

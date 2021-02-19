@@ -38,8 +38,6 @@ public class Payment {
     }
 
 
-
-
     @Override
     public String toString() {
         return "Information about payment: " + customer + "\nbanks = " + banks +
@@ -85,8 +83,7 @@ public class Payment {
         public String toString() {
             return "Customer: " +
                     "bankName = " + bankName + ", bankAccountName = " + bankAccountName +
-                    ", isAvailable = " + isAvailable + ", amountOfMoney = " + amountOfMoney
-                    ;
+                    ", isAvailable = " + isAvailable + ", amountOfMoney = " + amountOfMoney;
         }
     }
 }
