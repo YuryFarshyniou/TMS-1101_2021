@@ -1,4 +1,4 @@
-package Tasks.lesson_11.taskFromBlinov_Calendar;
+package Tasks.lesson_11.task_from_blinov_calendar.by.yurachel.calendar_task.entity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -56,7 +56,7 @@ public class Calendar {
 
     // Внутренний класс для выходных.
 
-    class Weekend {
+    public class Weekend {
         List<Integer> weekend = new ArrayList<>();
 
         // Добавляем дни выходных в список.
@@ -111,7 +111,7 @@ public class Calendar {
 
     // Класс для праздничных дней.
 
-    class Holiday {
+    public class Holiday {
         Map<String, Integer> holiday = new HashMap<>();
 
         // Добавляем праздники.

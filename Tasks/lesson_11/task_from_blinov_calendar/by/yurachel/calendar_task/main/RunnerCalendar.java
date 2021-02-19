@@ -1,4 +1,6 @@
-package Tasks.lesson_11.taskFromBlinov_Calendar;
+package Tasks.lesson_11.task_from_blinov_calendar.by.yurachel.calendar_task.main;
+
+import Tasks.lesson_11.task_from_blinov_calendar.by.yurachel.calendar_task.entity.Calendar;
 
 import java.io.IOException;
 
