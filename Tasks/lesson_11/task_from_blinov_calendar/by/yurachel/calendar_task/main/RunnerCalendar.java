@@ -10,6 +10,7 @@ public class RunnerCalendar {
         Calendar c = new Calendar(2020, 365);
         Sort sort = new Sort();
         Add add = new Add();
+        Show show = new Show();
 
         // Дни недели.
 
@@ -26,10 +27,10 @@ public class RunnerCalendar {
         add.addHoliday(c, "Easter", 130);
         add.addHoliday(c, "September 1", 264);
 
-        Show.showHoliday(c.getHolidayList());
+        show.showHoliday(c.getHolidayList());
         sort.sortHolidays(c.getHolidayList(), "Ascending");
         System.out.println("************************************************");
-        Show.showHoliday(c.getHolidayList());
+        show.showHoliday(c.getHolidayList());
 
     }
 }

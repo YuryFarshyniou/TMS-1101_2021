@@ -8,7 +8,7 @@ public class Show {
 
     // Выводим выходные.
 
-    public static void showWeekends(Calendar calendar, List<Integer> daysList) {
+    public  void showWeekends(Calendar calendar, List<Integer> daysList) {
         int weeks = 1;
         for (int i = 0; i < calendar.getWeekends().getWeekend().size(); ) {
             if (calendar.getWeekends().getFirstDayOfTheYear().equalsIgnoreCase("sunday") && i == 0) {
@@ -24,7 +24,7 @@ public class Show {
 
     // Выводим праздники на консоль.
 
-    public static void showHoliday(List<Calendar.Holiday> holidayList) {
+    public void showHoliday(List<Calendar.Holiday> holidayList) {
         for (Calendar.Holiday entry : holidayList) {
             System.out.println(entry);
         }
