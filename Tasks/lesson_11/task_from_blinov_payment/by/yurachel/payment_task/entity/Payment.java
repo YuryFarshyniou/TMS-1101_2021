@@ -5,11 +5,11 @@ import java.util.*;
 public class Payment {
     private Customer customer;
     private List<String> banks;
-    private Map<String, Integer> prices;
+    private Map<String, Integer> purchaseMap;
     private boolean isOk;
 
     {
-        prices = new HashMap<>();
+        purchaseMap = new HashMap<>();
         banks = new ArrayList<>(Arrays.asList("AlfaBank", "BelarusBank", "BelGazPromBank", "BelWebBank"));
     }
 
@@ -33,15 +33,15 @@ public class Payment {
         return customer;
     }
 
-    public Map<String, Integer> getPrices() {
-        return prices;
+    public Map<String, Integer> getPurchaseMap() {
+        return purchaseMap;
     }
 
 
     @Override
     public String toString() {
         return "Information about payment: " + customer + "\nbanks = " + banks +
-                ", prices = " + prices + ".";
+                ", prices = " + purchaseMap + ".";
     }
 
 // Создаем внутренний класс
@@ -54,6 +54,18 @@ public class Payment {
 
         public String getBankName() {
             return bankName;
+        }
+
+        public void setBankName(String bankName) {
+            this.bankName = bankName;
+        }
+
+        public void setBankAccountName(long bankAccountName) {
+            this.bankAccountName = bankAccountName;
+        }
+
+        public void setAvailable(boolean available) {
+            isAvailable = available;
         }
 
         public long getBankAccountName() {

@@ -19,7 +19,7 @@ public class Purchases {
 
     // Добавляем покупки
 
-    public void addPurchase(Map<String,Integer>prices,String purchaseName, int purchasePrice) {
+    public void addPurchase(Map<String, Integer> prices, String purchaseName, int purchasePrice) {
         prices.put(purchaseName, purchasePrice);
     }
 
@@ -35,16 +35,15 @@ public class Purchases {
 
     // Оплачиваем покупки.
 
-    public void payment(Payment payment, Map<String, Integer> priceList) {
+    public void payment(Payment payment, Map<String, Integer> priceList) throws Exception {
         if (payment.isOk() && payment.getCustomer().isAvailable() && payment.getCustomer().getAmountOfMoney() > sumOfPurchase(priceList)) {
             payment.getCustomer().setAmountOfMoney(payment.getCustomer().getAmountOfMoney() - sumOfPurchase(priceList));
-            System.out.println("Payment success.");
         } else if (!payment.isOk() && payment.getCustomer().isAvailable() && payment.getCustomer().getAmountOfMoney() > sumOfPurchase(priceList)) {
-            System.out.println("We not accept this bank's cards.We're sorry.");
+            throw new Exception("We not accept this bank's cards.We're sorry.");
         } else if (payment.isOk() && !payment.getCustomer().isAvailable() && payment.getCustomer().getAmountOfMoney() > sumOfPurchase(priceList)) {
-            System.out.println("Customer's card blocked.");
+            throw new Exception("Customer's card blocked.");
         } else if (payment.isOk() && payment.getCustomer().isAvailable() && payment.getCustomer().getAmountOfMoney() < sumOfPurchase(priceList)) {
-            System.out.println("There are not enough money at the card");
+            throw new Exception("There are not enough money at the card");
         }
     }
 
