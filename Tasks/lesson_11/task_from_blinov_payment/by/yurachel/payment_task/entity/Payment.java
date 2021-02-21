@@ -1,20 +1,29 @@
 package Tasks.lesson_11.task_from_blinov_payment.by.yurachel.payment_task.entity;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class Payment {
     private Customer customer;
     private List<String> banks;
-    private Map<String, Integer> purchaseMap;
+    private List<Purchase> purchaseList;
     private boolean isOk;
 
     {
-        purchaseMap = new HashMap<>();
+
+        purchaseList = new ArrayList<>();
         banks = new ArrayList<>(Arrays.asList("AlfaBank", "BelarusBank", "BelGazPromBank", "BelWebBank"));
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(String name, String bankName, boolean isAvailable, int amountOfMoney) {
+        this.customer = new Customer(name, bankName, isAvailable, amountOfMoney);
     }
 
     public boolean isOk() {
@@ -29,28 +38,71 @@ public class Payment {
         return banks;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public void setBanks(List<String> banks) {
+        this.banks = banks;
     }
 
-    public Map<String, Integer> getPurchaseMap() {
-        return purchaseMap;
+    public List<Purchase> getPurchaseList() {
+        return purchaseList;
+    }
+
+    public void setPurchaseList(List<Purchase> purchaseList) {
+        this.purchaseList = purchaseList;
     }
 
 
-    @Override
     public String toString() {
         return "Information about payment: " + customer + "\nbanks = " + banks +
-                ", prices = " + purchaseMap + ".";
+                purchaseList + ".";
     }
 
 // Создаем внутренний класс
 
-    public class Customer {
+    private class Purchase {
+        private String purchaseName;
+        private int prices;
+
+        public String getPurchaseName() {
+            return purchaseName;
+        }
+
+        public void setPurchaseName(String purchaseName) {
+            this.purchaseName = purchaseName;
+        }
+
+        public int getPrices() {
+            return prices;
+        }
+
+        public void setPrices(int prices) {
+            this.prices = prices;
+        }
+
+        public Purchase(String purchaseName, int prices) {
+            this.purchaseName = purchaseName;
+            this.prices = prices;
+        }
+
+
+        public String toString() {
+            return "Purchase's information." + "purchaseName: " + purchaseName + ", prices: " + prices;
+        }
+    }
+
+    private class Customer {
+        private String name;
         private String bankName;
-        private long bankAccountName;
         private boolean isAvailable;
         private int amountOfMoney;
+
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
 
         public String getBankName() {
             return bankName;
@@ -60,20 +112,12 @@ public class Payment {
             this.bankName = bankName;
         }
 
-        public void setBankAccountName(long bankAccountName) {
-            this.bankAccountName = bankAccountName;
+        public boolean isAvailable() {
+            return isAvailable;
         }
 
         public void setAvailable(boolean available) {
             isAvailable = available;
-        }
-
-        public long getBankAccountName() {
-            return bankAccountName;
-        }
-
-        public boolean isAvailable() {
-            return isAvailable;
         }
 
         public int getAmountOfMoney() {
@@ -84,18 +128,73 @@ public class Payment {
             this.amountOfMoney = amountOfMoney;
         }
 
-        public Customer(String bankName, long bankAccountName, boolean isAvailable, int amountOfMoney) {
+        public Customer(String name, String bankName, boolean isAvailable, int amountOfMoney) {
+            this.name = name;
             this.bankName = bankName;
-            this.bankAccountName = bankAccountName;
             this.isAvailable = isAvailable;
             this.amountOfMoney = amountOfMoney;
         }
 
-        @Override
+
         public String toString() {
-            return "Customer: " +
-                    "bankName = " + bankName + ", bankAccountName = " + bankAccountName +
-                    ", isAvailable = " + isAvailable + ", amountOfMoney = " + amountOfMoney;
+            return "Customer's information. " + "name: " + name + ", bankName: " + bankName +
+                    ", is available card: " + isAvailable + ", amountOfMoney = " + amountOfMoney;
         }
     }
+
+    // Поддерживает ли магазин банк клиента.
+
+    public void isSupportingBank() {
+        for (String name : banks) {
+            if (customer.getBankName().equalsIgnoreCase(name)) {
+                this.isOk = true;
+                return;
+            }
+        }
+    }
+
+    // Добавляем покупки
+
+    public void addPurchase(String purchaseName, int purchasePrice) {
+        this.purchaseList.add(new Purchase(purchaseName, purchasePrice));
+    }
+
+    // Общая сумма покупок.
+
+    public int sumOfPurchase() {
+        int sum = 0;
+        for (Purchase purchase : this.purchaseList) {
+            sum += purchase.prices;
+        }
+        return sum;
+    }
+
+    // Выводим список покупок.
+
+    public void showPurchases() {
+        for (Purchase purchase : purchaseList) {
+            System.out.println("Purchase " + purchase.purchaseName + " and it's price is " + purchase.prices);
+        }
+    }
+
+    // Оплачиваем покупки.
+
+    public void payment() throws Exception {
+        if (this.isOk && getCustomer().isAvailable() && getCustomer().getAmountOfMoney() > sumOfPurchase()) {
+            getCustomer().setAmountOfMoney(getCustomer().getAmountOfMoney() - sumOfPurchase());
+        } else if (!isOk && getCustomer().isAvailable() && getCustomer().getAmountOfMoney() > sumOfPurchase()) {
+            throw new Exception("We not accept this bank's cards.We're sorry.");
+        } else if (isOk && !getCustomer().isAvailable() && getCustomer().getAmountOfMoney() > sumOfPurchase()) {
+            throw new Exception("Customer's card blocked.");
+        } else if (isOk && getCustomer().isAvailable() && getCustomer().getAmountOfMoney() < sumOfPurchase()) {
+            throw new Exception("There are not enough money at the card.");
+        }
+    }
+
+    // Добавляем новый банк .
+
+    public void addBank(String bankName) {
+        banks.add(bankName);
+    }
+
 }

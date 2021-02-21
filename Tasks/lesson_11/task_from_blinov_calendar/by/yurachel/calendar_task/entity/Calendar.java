@@ -4,116 +4,124 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calendar {
-    private Weekend weekends;
-    private Holiday holiday;
-    private int year;
-    private int amountOfDayInThisYear;
-    private List<Calendar.Holiday> holidayList;
+    private List<Weekend> weekendList;
 
     {
-        holidayList = new ArrayList<>();
+        weekendList = new ArrayList<>();
     }
 
-    public Holiday getHoliday() {
-        return holiday;
+    public List<Weekend> getWeekendList() {
+        return weekendList;
     }
 
-    public void setHoliday(Holiday holiday) {
-        this.holiday = holiday;
-    }
-
-    public List<Holiday> getHolidayList() {
-        return holidayList;
-    }
-
-    public void setHolidayList(List<Holiday> holidayList) {
-        this.holidayList = holidayList;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public int getAmountOfDayInThisYear() {
-        return amountOfDayInThisYear;
-    }
-
-    public Weekend getWeekends() {
-        return weekends;
-    }
-
-    public void setWeekends(Weekend weekends) {
-        this.weekends = weekends;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public void setAmountOfDayInThisYear(int amountOfDayInThisYear) {
-        this.amountOfDayInThisYear = amountOfDayInThisYear;
-    }
-
-    public Calendar(int year, int amountOfDay) {
-        this.year = year;
-        this.amountOfDayInThisYear = amountOfDay;
+    public void setWeekendList(List<Weekend> weekendList) {
+        this.weekendList = weekendList;
     }
 
     // Внутренний класс для выходных.
 
-    public class Weekend {
-        private final String firstDayOfTheYear;
-        private final List<Integer> weekend;
+    private class Weekend {
+        private String month;
+        private int date;
+        private String dayOfTheWeek;
+        boolean isHoliday;
+        private String description;
 
-        {
-            weekend = new ArrayList<>();
+        public String getMonth() {
+            return month;
         }
 
-        public String getFirstDayOfTheYear() {
-            return firstDayOfTheYear;
+        public void setMonth(String month) {
+            this.month = month;
         }
 
-        public List<Integer> getWeekend() {
-            return weekend;
+        public int getDate() {
+            return date;
         }
 
-        public Weekend(String firstDayOfTheYear) {
-            this.firstDayOfTheYear = firstDayOfTheYear;
-        }
-    }
-
-
-    // Класс для праздничных дней.
-
-    public class Holiday {
-
-        private String holidayName;
-        private int holidayDay;
-
-        public String getHolidayName() {
-            return holidayName;
+        public void setDate(int date) {
+            this.date = date;
         }
 
-        public void setHolidayName(String holidayName) {
-            this.holidayName = holidayName;
+        public String getDayOfTheWeek() {
+            return dayOfTheWeek;
         }
 
-        public int getHolidayDay() {
-            return holidayDay;
+        public void setDayOfTheWeek(String dayOfTheWeek) {
+            this.dayOfTheWeek = dayOfTheWeek;
         }
 
-        public void setHolidayDay(int holidayDay) {
-            this.holidayDay = holidayDay;
+        public boolean isHoliday() {
+            return isHoliday;
         }
 
-        public Holiday(String holidayName, int holidayDay) {
-            this.holidayName = holidayName;
-            this.holidayDay = holidayDay;
+        public void setHoliday(boolean holiday) {
+            isHoliday = holiday;
         }
 
-        @Override
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public Weekend(String month, int date, String dayOfTheWeek, boolean isHoliday, String description) {
+            this.month = month;
+            this.date = date;
+            this.dayOfTheWeek = dayOfTheWeek;
+            this.isHoliday = isHoliday;
+            this.description = description;
+        }
+
         public String toString() {
-            return "Holiday: " + holidayName + ", day of the year: " + holidayDay;
+            return "Weekend's information: " + "month: " + month + ", date: " + date +
+                    ", dayOfTheWeek: " + dayOfTheWeek + ", is holiday: " + isHoliday + ", description: " + description;
         }
     }
+
+    // Добавляем выходные в список.
+
+    public void addWeekend(String month, int date, String dayOfTheWeek, boolean isHoliday, String description) {
+        weekendList.add(new Weekend(month, date, dayOfTheWeek, isHoliday, description));
+    }
+
+    // Выводим выходные на консоль.
+
+    public void showWeekend() {
+        for (Weekend weekend : weekendList) {
+            System.out.println(weekend);
+        }
+    }
+
+    // Сортируем праздники до дате.
+
+    public void sortHolidays(String order) throws Exception {
+        if (order.equalsIgnoreCase("Ascending")) {
+            weekendList.sort((weekend1, weekend2) -> weekend1.getMonth().compareTo(weekend2.getMonth()));
+        } else if (order.equalsIgnoreCase("Descending")) {
+            weekendList.sort((weekend1, weekend2) -> weekend2.getMonth().compareTo(weekend1.getMonth()));
+        } else {
+            throw new Exception("This order doesn't exists");
+        }
+    }
+
+    // Выводим праздники или выходные.
+
+    public void showHolidaysOrWeekend(String holidayOrWeekend) {
+        for (Weekend weekend : weekendList) {
+            if (holidayOrWeekend.equalsIgnoreCase("Holiday")) {
+                if (weekend.isHoliday) {
+                    System.out.println(weekend);
+                }
+            } else if (holidayOrWeekend.equalsIgnoreCase("Weekend")) {
+                if (!weekend.isHoliday) {
+                    System.out.println(weekend);
+                }
+            }
+        }
+    }
+
+
 }
