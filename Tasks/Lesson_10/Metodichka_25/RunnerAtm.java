@@ -6,15 +6,15 @@ public class RunnerAtm {
 
         // Добавляем деньги в банкомат.
 
-        a.addCash(2090);
-        System.out.println(a);
+//        a.addCash(2090);
+//        System.out.println(a);
 
         // Снимаем деньги с банкомата.
 
         System.out.println("*******************");
 
 
-        a.removeCash(2170);
+        a.removeCash(5125);
 
         System.out.println(a);
     }
