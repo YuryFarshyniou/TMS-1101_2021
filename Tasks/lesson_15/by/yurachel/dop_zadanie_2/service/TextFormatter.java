@@ -8,7 +8,7 @@ public class TextFormatter {
 
     public static int countWords(String line) {
         int wordsCounter = 0;
-        Pattern pattern = Pattern.compile("\\w+");
+        Pattern pattern = Pattern.compile("\\w+",Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(line);
         while (matcher.find()) {
             wordsCounter++;
@@ -18,7 +18,7 @@ public class TextFormatter {
 
     public static boolean havePalindrome(String line) {
         boolean isPalindrome = false;
-        Pattern pattern = Pattern.compile("\\w+");
+        Pattern pattern = Pattern.compile("\\w+",Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(line);
         while (matcher.find()) {
             StringBuilder palindrome = new StringBuilder("");
