@@ -12,19 +12,22 @@ import java.util.regex.Pattern;
 
 public class Service {
 
-    public final static String filePath = "resources\\methodichka_34\\FileWithNumbers.txt";
+    public final static String FILE_PATH = "resources\\methodichka_34\\FileWithNumbers.txt";
 
     public List<Double> findNumbersInFile() {
         List<Double> numbers = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             Pattern pattern = Pattern.compile("-?\\d+\\.?(\\d+)?", Pattern.UNICODE_CHARACTER_CLASS);
+            StringBuilder stringBuilder = new StringBuilder("");
             String number = "";
             while ((number = reader.readLine()) != null) {
-                Matcher matcher = pattern.matcher(number);
-                while (matcher.find()) {
-                    numbers.add(Double.parseDouble(matcher.group()));
-                }
+                stringBuilder.append(number);
             }
+            Matcher matcher = pattern.matcher(stringBuilder);
+            while (matcher.find()) {
+                numbers.add(Double.parseDouble(matcher.group()));
+            }
+
         } catch (IOException e) {
             System.err.println("File not found");
         }

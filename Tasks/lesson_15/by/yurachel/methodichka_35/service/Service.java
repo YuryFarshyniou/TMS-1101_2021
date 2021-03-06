@@ -7,11 +7,11 @@ import java.util.Random;
 
 public class Service {
 
-    public static final String filePath = "resources\\methodichka_35\\BinaryFile.txt";
+    public static final String FILE_PATH = "resources\\methodichka_35\\BinaryFile.txt";
 
     public void writeToFile() {
         Random random = new Random();
-        try (DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(filePath)))) {
+        try (DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(FILE_PATH)))) {
             for (int i = 0; i < 15; i++) {
                 dos.writeInt(random.nextInt(40));
             }
@@ -22,7 +22,7 @@ public class Service {
 
     public List<Integer> readFromFile() {
         List<Integer> numbers = new ArrayList<>();
-        try (DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream(filePath)))) {
+        try (DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream(FILE_PATH)))) {
             while (dis.available() != 0) {
                 numbers.add(dis.readInt());
             }

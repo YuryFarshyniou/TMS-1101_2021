@@ -18,13 +18,16 @@ public class Service {
         List<String> sentences = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(TEXT_FILE_PATH))) {
             Pattern pattern = Pattern.compile("[^.!?]+[.!?]");
+            StringBuilder stringBuilder = new StringBuilder("");
             String line = "";
             while ((line = reader.readLine()) != null) {
-                Matcher matcher = pattern.matcher(line);
+                stringBuilder.append(line);
+            }
+                Matcher matcher = pattern.matcher(stringBuilder);
                 while (matcher.find()) {
                     sentences.add(matcher.group());
                 }
-            }
+
         } catch (IOException e) {
             System.err.println("File not found");
         }

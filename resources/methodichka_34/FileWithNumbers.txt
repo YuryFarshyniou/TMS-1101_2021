@@ -1,3 +1,3 @@
 A regular 45546 expression, specified as a string, must first be123 compiled into an inst-123ance of this class.
- The resulting pattern can then be used to c567reate a Matcher object657 that can match arbi7trary character sequences against the regular expres9sion.
-  All of the state invo6lved in performing a ma324tch resides in the matcher, so many matc7hers can sha8re the sam56.78e pattern.
+The resulting pattern can then be used to c567reate a Matcher object657 that can match arbi7trary character sequences against the regular expres9sion.
+All of the state invo6lved in performing a ma324tch resides in the matcher, so many matc7hers can sha8re the sam56.78e pattern.

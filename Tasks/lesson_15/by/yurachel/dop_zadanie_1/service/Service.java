@@ -6,11 +6,11 @@ import java.util.List;
 
 public class Service {
 
-    public static final String filePathWithInitialWords = "resources\\dop_zadanie_1\\AnyWords.txt";
+    public static final String FILE_PATH_WITH_INITIAL_WORDS = "resources\\dop_zadanie_1\\AnyWords.txt";
 
     public List<String> readWords() {
         List<String> words = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePathWithInitialWords))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH_WITH_INITIAL_WORDS))) {
             String word = "";
             while ((word = reader.readLine()) != null) {
                 words.add(word);
