@@ -17,13 +17,14 @@ public class Main {
             while ((line = reader.readLine()) != null) {
                 stringBuilder.append(line);
             }
-            System.out.println(stringBuilder);
             Matcher matcher = pattern.matcher(stringBuilder.toString());
+
             while (matcher.find()) {
+                int amountOfWords = TextFormatter.countWords(matcher.group());
                 if (TextFormatter.havePalindrome(matcher.group())) {
                     System.out.println("Sentence with palindrome: " + matcher.group());
                     br.write(matcher.group() + "\n");
-                } else if (TextFormatter.countWords(matcher.group()) >= 3 && TextFormatter.countWords(matcher.group()) <= 5) {
+                } else if (amountOfWords >= 3 && amountOfWords <= 5) {
                     System.out.println("Sentence with amount of words: " + matcher.group());
                     br.write(matcher.group() + "\n");
                 }

@@ -7,8 +7,10 @@ import java.util.List;
 public class Service {
 
     public static final String FILE_PATH_WITH_INITIAL_WORDS = "resources\\dop_zadanie_1\\AnyWords.txt";
+    public static final String FILE_PATH_WITH_PALINDROMES = "resources\\dop_zadanie_1\\Palindromes.txt";
 
-    public List<String> readWords() {
+
+    private List<String> readWords() {
         List<String> words = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH_WITH_INITIAL_WORDS))) {
             String word = "";
@@ -21,14 +23,9 @@ public class Service {
         return words;
     }
 
-    public void showWords(List<String> list) {
-        for (String word : list) {
-            System.out.println(word);
-        }
-    }
-
-    public List<String> findPalindromes(List<String> words) {
+    private List<String> findPalindromes() {
         List<String> palindromes = new ArrayList<>();
+        List<String> words = readWords();
         for (String word : words) {
             StringBuilder ex = new StringBuilder("");
             ex.append(word.toLowerCase());
@@ -40,10 +37,9 @@ public class Service {
         return palindromes;
     }
 
-    public void writeToFile(List<String> palindromes) {
-        File file = new File("resources\\dop_zadanie_1\\Palindromes.txt");
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+    public void writeToFile() {
+        List<String> palindromes = findPalindromes();
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH_WITH_PALINDROMES))) {
             for (String word : palindromes) {
                 bw.write(word + "\n");
             }

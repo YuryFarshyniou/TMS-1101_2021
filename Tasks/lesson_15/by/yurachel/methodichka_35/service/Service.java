@@ -20,7 +20,7 @@ public class Service {
         }
     }
 
-    public List<Integer> readFromFile() {
+    private List<Integer> readFromFile() {
         List<Integer> numbers = new ArrayList<>();
         try (DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream(FILE_PATH)))) {
             while (dis.available() != 0) {
@@ -33,7 +33,8 @@ public class Service {
     }
 
 
-    public int average(List<Integer> numbers) {
+    public int average() {
+        List<Integer> numbers = readFromFile();
         int sum = 0;
         for (int number : numbers) {
             sum += number;

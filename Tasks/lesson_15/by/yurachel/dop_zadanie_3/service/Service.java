@@ -23,10 +23,10 @@ public class Service {
             while ((line = reader.readLine()) != null) {
                 stringBuilder.append(line);
             }
-                Matcher matcher = pattern.matcher(stringBuilder);
-                while (matcher.find()) {
-                    sentences.add(matcher.group());
-                }
+            Matcher matcher = pattern.matcher(stringBuilder);
+            while (matcher.find()) {
+                sentences.add(matcher.group());
+            }
 
         } catch (IOException e) {
             System.err.println("File not found");
@@ -58,11 +58,8 @@ public class Service {
             boolean isGoodSentence = true;
             Matcher matcher = pattern.matcher(sentence);
             while (matcher.find()) {
-                for (String blackWord : blackList) {
-                    if (matcher.group().equalsIgnoreCase(blackWord)) {
-                        isGoodSentence = false;
-                        break;
-                    }
+                if (blackList.contains(matcher.group())) {
+                    isGoodSentence = false;
                 }
             }
             if (!isGoodSentence) {
