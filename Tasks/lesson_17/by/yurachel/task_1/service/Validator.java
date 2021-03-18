@@ -18,7 +18,7 @@ public class Validator {
             SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             Schema schema = schemaFactory.newSchema(new File("resources/lesson_17/task_1/Book.xsd"));
             javax.xml.validation.Validator validator = schema.newValidator();
-            validator.validate(new StreamSource(new File("resources/lesson_17/task_1/Library.xml")));
+            validator.validate(new StreamSource(new File("resources/lesson_17/task_1/Libra2ry.xml")));
         } catch (IOException | SAXException e) {
             System.err.println(e.getMessage());
             return false;
