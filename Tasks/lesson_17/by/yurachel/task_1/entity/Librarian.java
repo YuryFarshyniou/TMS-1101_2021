@@ -44,8 +44,6 @@ public class Librarian extends Thread {
         for (Client client : clients) {
             List<Book> books = new ArrayList<>();
 
-//            try {
-//                Thread.sleep(1000);
                 synchronized (books) {
                     for (int i = 0; i < random.nextInt((library.size() - 1)) + 1; i++) {
                         Book book = library.get(random.nextInt(library.size()));
@@ -60,9 +58,6 @@ public class Librarian extends Thread {
                     }
                     client.takeBookForReading(books);
                 }
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
         }
     }
 }
