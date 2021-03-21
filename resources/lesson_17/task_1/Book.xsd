@@ -17,7 +17,6 @@
                                 </xs:simpleType>
                             </xs:element>
                             <xs:element name="numberOfPages" type="xs:integer"/>
-                            <xs:element name="forReadingRoom" type="xs:boolean"/>
                             <xs:element name="forTakingHome" type="xs:boolean"/>
                         </xs:sequence>
                         <xs:attribute name="Id">

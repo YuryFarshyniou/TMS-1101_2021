@@ -22,7 +22,7 @@ public class DOMParser {
         List<Book> bookList = new ArrayList<>();
         try {
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document document = builder.parse("resources/lesson_17/task_1/Libra2ry.xml");
+            Document document = builder.parse("resources/lesson_17/task_1/Library.xml");
             Node root = document.getDocumentElement();
             NodeList books = root.getChildNodes();
 
@@ -66,9 +66,6 @@ public class DOMParser {
 
                         if (bookNode.getNodeName().equalsIgnoreCase("numberOfPages")) {
                             book1.setNumberOfPages(Integer.parseInt(bookNode.getTextContent()));
-                        }
-                        if (bookNode.getNodeName().equalsIgnoreCase("forReadingRoom")) {
-                            book1.setForReadingRoom(Boolean.parseBoolean(bookNode.getTextContent()));
                         }
                         if (bookNode.getNodeName().equalsIgnoreCase("forTakingHome")) {
                             book1.setForTakingHome(Boolean.parseBoolean(bookNode.getTextContent()));

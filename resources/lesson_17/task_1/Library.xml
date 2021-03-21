@@ -4,11 +4,13 @@
         <bookName>Fire</bookName>
         <Author>
             <AuthorName>Barick D.C.</AuthorName>
-            <AuthorName>Rock lee</AuthorName>
+            <AuthorName>John French</AuthorName>
         </Author>
         <Genre>SCIENCE_FANTASY</Genre>
         <Price>100</Price>
         <numberOfPages>300</numberOfPages>
+        <forTakingHome>true</forTakingHome>
+
     </Book>
     <Book Id="Id-2">
         <bookName>Fly</bookName>
@@ -18,14 +20,16 @@
         <Genre>COMEDY</Genre>
         <Price>240</Price>
         <numberOfPages>560</numberOfPages>
+        <forTakingHome>false</forTakingHome>
     </Book>
     <Book Id="Id-3">
         <bookName>Horus Rising</bookName>
         <Author>
-            <AuthorName>Uchiha Sasyke</AuthorName>
+            <AuthorName>Poll Back</AuthorName>
         </Author>
         <Genre>SCIENCE_FANTASY</Genre>
         <Price>99</Price>
         <numberOfPages>345</numberOfPages>
+        <forTakingHome>true</forTakingHome>
     </Book>
 </Library>

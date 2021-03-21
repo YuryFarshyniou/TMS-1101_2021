@@ -9,8 +9,8 @@ public class Book {
     private Genre genre;
     private int price;
     private int numberOfPages;
-    private boolean forReadingRoom;
     private boolean forTakingHome;
+    private boolean wasItTakenAway;
 
 
     public List<Author> getAuthors() {
@@ -53,14 +53,6 @@ public class Book {
         this.numberOfPages = numberOfPages;
     }
 
-    public boolean isForReadingRoom() {
-        return forReadingRoom;
-    }
-
-    public void setForReadingRoom(boolean forReadingRoom) {
-        this.forReadingRoom = forReadingRoom;
-    }
-
     public boolean isForTakingHome() {
         return forTakingHome;
     }
@@ -69,17 +61,25 @@ public class Book {
         this.forTakingHome = forTakingHome;
     }
 
+    public boolean isWasItTakenAway() {
+        return wasItTakenAway;
+    }
+
+    public void setWasItTakenAway(boolean wasItTakenAway) {
+        this.wasItTakenAway = wasItTakenAway;
+    }
+
     public Book() {
 
     }
 
-    public Book(String bookName, List<Author> authors, Genre genre, int price, int numberOfPages, boolean forReadingRoom, boolean forTakingHome) {
+    public Book(String bookName, List<Author> authors, Genre genre, int price, int numberOfPages, boolean forTakingHome) {
         this.bookName = bookName;
         this.authors = authors;
         this.genre = genre;
         this.price = price;
         this.numberOfPages = numberOfPages;
-        this.forReadingRoom = forReadingRoom;
+
         this.forTakingHome = forTakingHome;
     }
 
@@ -89,13 +89,12 @@ public class Book {
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
         return price == book.price && numberOfPages == book.numberOfPages &&
-                forReadingRoom == book.forReadingRoom && Objects.equals(bookName, book.bookName) &&
-                Objects.equals(authors, book.authors) && genre == book.genre;
+                Objects.equals(bookName, book.bookName) && Objects.equals(authors, book.authors) && genre == book.genre;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookName, authors, genre, price, numberOfPages, forReadingRoom);
+        return Objects.hash(bookName, authors, genre, price, numberOfPages);
     }
 
     @Override
@@ -111,6 +110,6 @@ public class Book {
         }
         return "BookName: " + bookName + ", Authors: " + stringBuilder + ", Genre "
                 + genre + ", Price: " + price + "$, NumberOfPages: " + numberOfPages +
-                ", For reading room: " + forReadingRoom + ", For taking home: " + forTakingHome;
+                ", For taking home: " + forTakingHome;
     }
 }
