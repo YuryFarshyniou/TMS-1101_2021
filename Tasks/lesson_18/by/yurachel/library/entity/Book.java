@@ -4,12 +4,22 @@ import java.util.List;
 import java.util.Objects;
 
 public class Book {
+    private int id;
     private String bookName;
     private List<Author> authors;
     private Genre genre;
     private int price;
     private int numberOfPages;
 
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public List<Author> getAuthors() {
         return authors;
@@ -55,9 +65,18 @@ public class Book {
 
     }
 
-    public Book(String bookName, List<Author> authors, Genre genre, int price, int numberOfPages) {
+    public Book(int id, String bookName, List<Author> authors, Genre genre, int price, int numberOfPages) {
         this.bookName = bookName;
         this.authors = authors;
+        this.genre = genre;
+        this.price = price;
+        this.numberOfPages = numberOfPages;
+        this.id = id;
+    }
+
+    public Book(int id, String bookName, Genre genre, int price, int numberOfPages) {
+        this.id = id;
+        this.bookName = bookName;
         this.genre = genre;
         this.price = price;
         this.numberOfPages = numberOfPages;
@@ -68,13 +87,13 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return price == book.price && numberOfPages == book.numberOfPages &&
-                Objects.equals(bookName, book.bookName) && Objects.equals(authors, book.authors) && Objects.equals(genre, book.genre);
+        return id == book.id && price == book.price && numberOfPages == book.numberOfPages &&
+                Objects.equals(bookName, book.bookName) && Objects.equals(authors, book.authors) && genre == book.genre;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookName, authors, genre, price, numberOfPages);
+        return Objects.hash(id, bookName, authors, genre, price, numberOfPages);
     }
 
     @Override
@@ -88,7 +107,7 @@ public class Book {
                 stringBuilder.append(authors.get(i));
             }
         }
-        return "BookName: " + bookName + ", Authors: " + stringBuilder + ", Genre "
+        return "Id: " + id + " BookName: " + bookName + ", Authors: " + stringBuilder + ", Genre: "
                 + genre + ", Price: " + price + "$, NumberOfPages: " + numberOfPages;
     }
 }

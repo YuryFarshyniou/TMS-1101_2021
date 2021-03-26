@@ -4,6 +4,7 @@
         <bookName>Fly</bookName>
         <Author>
             <AuthorName>Aaron Dembski-Bouden</AuthorName>
+            <AuthorName>Some Author</AuthorName>
         </Author>
         <Genre>COMEDY</Genre>
         <Price>240</Price>

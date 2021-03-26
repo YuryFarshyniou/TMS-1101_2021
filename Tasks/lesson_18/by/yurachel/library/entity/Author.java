@@ -4,9 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Author {
+    private int id;
     private String fullName;
     private List<Book> bookList = new ArrayList<>();
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setBookList(List<Book> bookList) {
         this.bookList = bookList;
@@ -24,6 +32,14 @@ public class Author {
         this.fullName = fullName;
     }
 
+    public Author() {
+    }
+
+    public Author(int id, String fullName) {
+        this.id = id;
+        this.fullName = fullName;
+    }
+
     public Author(String fullName) {
         this.fullName = fullName;
     }
@@ -34,6 +50,6 @@ public class Author {
 
     @Override
     public String toString() {
-        return fullName;
+        return "Id: " + id + ", Author's name: " + fullName;
     }
 }

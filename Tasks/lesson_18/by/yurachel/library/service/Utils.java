@@ -111,4 +111,15 @@ public class Utils {
     public void removeBook(List<Book> books, String bookName) {
         books.removeIf(book -> book.getBookName().equalsIgnoreCase(bookName));
     }
+
+    // Ищем книгу по ID.
+
+    public Book findBookByID(List<Book> books, int id) {
+        for (Book book : books) {
+            if (book.getId() == id) {
+                return book;
+            }
+        }
+        return null;
+    }
 }

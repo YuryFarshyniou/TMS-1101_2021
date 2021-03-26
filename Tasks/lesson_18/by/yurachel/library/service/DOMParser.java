@@ -1,6 +1,7 @@
 package tasks.lesson_18.by.yurachel.library.service;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import tasks.lesson_18.by.yurachel.library.entity.Author;
@@ -11,6 +12,7 @@ import tasks.lesson_18.by.yurachel.library.entity.Library;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DOMParser {
@@ -30,6 +32,11 @@ public class DOMParser {
 
                 if (book.getNodeName().equalsIgnoreCase("Book")) {
                     Book book1 = new Book();
+
+                    Node attribute = book.getAttributes().getNamedItem("Id");
+                    int id = Integer.parseInt(attribute.toString().replaceAll("\\D",""));
+                    book1.setId(id);
+
                     NodeList bookChildNodes = book.getChildNodes();
 
                     for (int j = 0; j < bookChildNodes.getLength(); j++) {
