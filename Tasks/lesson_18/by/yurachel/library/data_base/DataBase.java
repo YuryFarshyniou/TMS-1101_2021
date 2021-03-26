@@ -9,6 +9,15 @@ import java.sql.*;
 import java.util.*;
 
 public class DataBase {
+    private static final Map<Integer, Genre> genres2 = new LinkedHashMap<>();
+
+    static {
+        int count = 1;
+        for (Genre genre : EnumSet.allOf(Genre.class)) {
+            genres2.put(count, genre);
+            count++;
+        }
+    }
 
     public void connectionToDB(Library library) throws SQLException, ClassNotFoundException {
 
@@ -19,49 +28,19 @@ public class DataBase {
 
             addAllBooks(connection);
 
-
-//            Statement statement = connection.createStatement();
-//            ResultSet rs = statement.executeQuery("select * from book");
-//
-//            while (rs.next()) {
-//                Book book = new Book(rs.getInt(1),
-//                        rs.getString(2), Genre.FANTASY, rs.getInt(4), rs.getInt(5));
-//                PreparedStatement ps = connection.prepareStatement("select * from book_author where book_id = ?");
-//                ps.setInt(1, book.getId());
-//                ResultSet set = ps.executeQuery();
-//                List<Author> authorList = new ArrayList<>();
-//                while (set.next()) {
-//                    authorList.add(addAuthor(rs.getInt(1), connection));
-//                }
-//                book.setAuthors(authorList);
-//
-//                System.out.println(book);
-//
-//            }
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-//    private Author addAuthor(int authorId, Connection connection) throws SQLException {
-//        PreparedStatement ps = connection.prepareStatement("select * from authors where id = ?");
-//        ps.setInt(1, authorId);
-//        ResultSet rs = ps.executeQuery();
-//        List<Author> authors = new ArrayList<>();
-//        while (rs.next()) {
-//            authors.add(new Author(rs.getInt(1), rs.getString(2)));
-//        }
-//        return !authors.isEmpty() ? authors.get(0) : null;
-//    }
-
     private void addAllBooks(Connection connection) throws SQLException {
 
-        String sql = "select b.id, b.book_name, b.genre, b.price, b.number_of_pages, a.id, a.full_name\n" +
+        String sql = "select b.id, b.book_name, b.price, b.number_of_pages, a.id, a.full_name,g.id,g.genres" +
                 "from book b" +
                 "         left join book_author ba on b.id = ba.book_id" +
-                "         left join authors a on ba.author_id = a.id";
+                "         left join authors a on ba.author_id = a.id " +
+                "left join genre g on g.id = bg.genre_id " +
+                "left join book_genre bg on b.id = bg.book_id";
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(sql);
         Map<Book, List<Author>> books = new HashMap<>();
@@ -71,20 +50,25 @@ public class DataBase {
             if (bookOpt.isPresent()) {
                 bookOpt.ifPresent(book -> book.getAuthors().add(createAuthor(rs)));
             } else {
+                Genre bookGenre = null;
+                for (Map.Entry entry : genres2.entrySet()) {
+                    if (entry.getKey() == (Integer) rs.getInt(7)) {
+                        bookGenre = (Genre) entry.getValue();
+                    }
+                }
 
-                Book book = new Book(bookId, rs.getString(2), new ArrayList<>(Arrays.asList(createAuthor(rs))), Genre.COMEDY,
-                        rs.getInt(4), rs.getInt(5));
+                Book book = new Book(bookId, rs.getString(2), new ArrayList<>(Arrays.asList(createAuthor(rs))), bookGenre,
+                        rs.getInt(3), rs.getInt(4));
 
                 books.put(book, book.getAuthors());
             }
         }
         System.out.println(books.keySet());
-
     }
 
     private Author createAuthor(ResultSet rs) {
         try {
-            return new Author(rs.getInt(6), rs.getString(7));
+            return new Author(rs.getInt(5), rs.getString(6));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -92,20 +76,42 @@ public class DataBase {
         return new Author();
     }
 
+
     private void insertBooks(Connection connection, List<Book> books) throws SQLException {
+        String sqlDeleteAllFromAuthors = "DELETE FROM authors";
+        String sqlDeleteAllFromBooks = "DELETE FROM book";
+        String sqlDeleteAllFromBookAuthor = "DELETE FROM book_author";
+        String sqlDeleteAllFromBookGenre = "DELETE FROM book_genre";
+
         String sqlResetIdBooks = "alter table book auto_increment = 1";
         String sqlResetIdAuthors = "alter table authors auto_increment = 1";
+
         String sqlInsertAuthors = "insert into authors (full_name) values(?)";
-        String sqlInsertBooks = "insert into book(book_name,genre,price,number_of_pages) values(?,?,?,?)";
+        String sqlInsertBooks = "insert into book(book_name,price,number_of_pages) values(?,?,?)";
         String sqlInsertBookAuthor = "insert into book_author (book_id,author_id) values(?,?)";
+        String sqlInsertBookGenre = "insert into book_genre(book_id,genre_id) values(?,?)";
+
+
+        PreparedStatement psDeleteAllFromBookAuthor = connection.prepareStatement(sqlDeleteAllFromBookAuthor);
+        psDeleteAllFromBookAuthor.executeUpdate();
+        PreparedStatement psDeleteAllFromBookGenre = connection.prepareStatement(sqlDeleteAllFromBookGenre);
+        psDeleteAllFromBookGenre.executeUpdate();
+        PreparedStatement psDeleteAllFromAuthors = connection.prepareStatement(sqlDeleteAllFromAuthors);
+        psDeleteAllFromAuthors.executeUpdate();
+        PreparedStatement psDeleteAllFromBooks = connection.prepareStatement(sqlDeleteAllFromBooks);
+        psDeleteAllFromBooks.executeUpdate();
+
 
         PreparedStatement st = connection.prepareStatement(sqlResetIdBooks);
         st.executeUpdate();
         PreparedStatement psAuthors = connection.prepareStatement(sqlResetIdAuthors);
         psAuthors.executeUpdate();
         for (Book book : books) {
+
             List<Author> authors = book.getAuthors();
             List<Integer> authorsKeys = new ArrayList<>();
+
+            // Заносим значения в таблицу authors.
 
             for (Author author : authors) {
                 PreparedStatement pc1 = connection.prepareStatement(sqlInsertAuthors, Statement.RETURN_GENERATED_KEYS);
@@ -117,20 +123,37 @@ public class DataBase {
                 }
             }
 
+            // Заносим значения в таблицу book.
 
             PreparedStatement pc = connection.prepareStatement(sqlInsertBooks, Statement.RETURN_GENERATED_KEYS);
             pc.setString(1, book.getBookName());
-            pc.setString(2, book.getGenre().toString());
-            pc.setInt(3, book.getPrice());
-            pc.setInt(4, book.getNumberOfPages());
-
+            pc.setInt(2, book.getPrice());
+            pc.setInt(3, book.getNumberOfPages());
             pc.executeUpdate();
+
+            // Ищем id книги.
+
             int bookId = 0;
             ResultSet rs = pc.getGeneratedKeys();
             if (rs.next()) {
                 bookId = rs.getInt(1);
             }
 
+            // Заносим значения в таблицу book_genre.
+
+            PreparedStatement psBookGenre = connection.prepareStatement(sqlInsertBookGenre);
+            psBookGenre.setInt(1, bookId);
+            int genreId = 0;
+            for (Map.Entry entry : genres2.entrySet()) {
+                if (book.getGenre().toString().equalsIgnoreCase(entry.getValue().toString())) {
+                    genreId = (int) entry.getKey();
+                    break;
+                }
+            }
+            psBookGenre.setInt(2, genreId);
+            psBookGenre.executeUpdate();
+
+            // Заносим значения в таблицу book_author.
 
             for (Integer key : authorsKeys) {
                 PreparedStatement psForConnectionTable = connection.prepareStatement(sqlInsertBookAuthor);
