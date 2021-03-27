@@ -390,7 +390,7 @@ public class View {
         System.out.println("");
     }
 
-    public void showAuthors(Book book) {
+    private void showAuthors(Book book) {
         for (Author author : book.getAuthors()) {
             System.out.println(author);
         }

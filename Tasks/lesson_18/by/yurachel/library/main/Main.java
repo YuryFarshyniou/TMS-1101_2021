@@ -23,11 +23,11 @@ public class Main {
 
 //        Validator validator = new Validator();
 //        System.out.println(validator.validateXML());
-        View view = new View(utils,l);
-        view.applicationMenu();
+//        View view = new View(utils,l);
+//        view.applicationMenu();
 
-//        DataBase db = new DataBase();
-//        db.connectionToDB(l);
+        DataBase db = new DataBase();
+        db.connectionToDB(l);
 
     }
 }
