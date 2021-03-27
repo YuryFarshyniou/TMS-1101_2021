@@ -35,12 +35,12 @@ public class DataBase {
 
     private void addAllBooks(Connection connection) throws SQLException {
 
-        String sql = "select b.id, b.book_name, b.price, b.number_of_pages, a.id, a.full_name,g.id,g.genres" +
+        String sql = "select b.id,b.book_name,b.price,b.number_of_pages,a.id,a.full_name,g.id, g.genres " +
                 "from book b" +
-                "         left join book_author ba on b.id = ba.book_id" +
-                "         left join authors a on ba.author_id = a.id " +
-                "left join genre g on g.id = bg.genre_id " +
-                "left join book_genre bg on b.id = bg.book_id";
+                "         left join book_author ba on b.id = ba.book_id\n" +
+                "         left join book_genre bg on b.id = bg.book_id\n" +
+                "         left join authors a on ba.author_id = a.id\n" +
+                "         left join genre g on bg.genre_id = g.id";
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(sql);
         Map<Book, List<Author>> books = new HashMap<>();
@@ -54,6 +54,7 @@ public class DataBase {
                 for (Map.Entry entry : genres2.entrySet()) {
                     if (entry.getKey() == (Integer) rs.getInt(7)) {
                         bookGenre = (Genre) entry.getValue();
+                        break;
                     }
                 }
 
