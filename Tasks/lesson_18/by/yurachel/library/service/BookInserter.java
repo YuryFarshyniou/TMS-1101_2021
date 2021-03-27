@@ -48,7 +48,13 @@ public class BookInserter {
 
 
             Element genre = document.createElement("Genre");
-            genre.setTextContent(book1.getGenre().toString());
+
+            for (int i = 0; i < book1.getGenre().size(); i++) {
+                Element bookGenre = document.createElement("BookGenre");
+                bookGenre.setTextContent(book1.getGenre().get(i));
+                genre.appendChild(bookGenre);
+            }
+
 
             Element price = document.createElement("Price");
             price.setTextContent(Integer.toString(book1.getPrice()));

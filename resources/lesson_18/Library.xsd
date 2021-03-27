@@ -14,7 +14,13 @@
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="Genre" type="xs:string"/>
+                            <xs:element name="Genre">
+                                <xs:complexType>
+                                    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                                        <xs:element name="BookGenre" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
                             <xs:element name="Price">
                                 <xs:simpleType>
                                     <xs:restriction base="xs:integer">

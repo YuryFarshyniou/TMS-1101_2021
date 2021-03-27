@@ -7,10 +7,9 @@ public class Book {
     private int id;
     private String bookName;
     private List<Author> authors;
-    private Genre genre;
+    private List<String> genre;
     private int price;
     private int numberOfPages;
-
 
 
     public int getId() {
@@ -21,6 +20,14 @@ public class Book {
         this.id = id;
     }
 
+    public String getBookName() {
+        return bookName;
+    }
+
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
+
     public List<Author> getAuthors() {
         return authors;
     }
@@ -29,12 +36,12 @@ public class Book {
         this.authors = authors;
     }
 
-    public String getBookName() {
-        return bookName;
+    public List<String> getGenre() {
+        return genre;
     }
 
-    public Genre getGenre() {
-        return genre;
+    public void setGenre(List<String> genre) {
+        this.genre = genre;
     }
 
     public int getPrice() {
@@ -49,23 +56,16 @@ public class Book {
         return numberOfPages;
     }
 
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
-    }
-
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
-
     public void setNumberOfPages(int numberOfPages) {
         this.numberOfPages = numberOfPages;
     }
+
 
     public Book() {
 
     }
 
-    public Book(int id, String bookName, List<Author> authors, Genre genre, int price, int numberOfPages) {
+    public Book(int id, String bookName, List<Author> authors, List<String> genre, int price, int numberOfPages) {
         this.bookName = bookName;
         this.authors = authors;
         this.genre = genre;
@@ -74,7 +74,7 @@ public class Book {
         this.id = id;
     }
 
-    public Book(int id, String bookName, Genre genre, int price, int numberOfPages) {
+    public Book(int id, String bookName, List<String> genre, int price, int numberOfPages) {
         this.id = id;
         this.bookName = bookName;
         this.genre = genre;
@@ -87,8 +87,8 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return id == book.id && price == book.price && numberOfPages == book.numberOfPages &&
-                Objects.equals(bookName, book.bookName) && Objects.equals(authors, book.authors) && genre == book.genre;
+        return id == book.id && price == book.price && numberOfPages == book.numberOfPages
+                && Objects.equals(bookName, book.bookName) && Objects.equals(authors, book.authors) && Objects.equals(genre, book.genre);
     }
 
     @Override
@@ -98,16 +98,26 @@ public class Book {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder("");
 
+        StringBuilder stringBuilderAuthor = new StringBuilder("");
+        StringBuilder stringBuilderGenre = new StringBuilder("");
         for (int i = 0; i < authors.size(); i++) {
             if (authors.size() > 1 && i != authors.size() - 1) {
-                stringBuilder.append(authors.get(i)).append(",");
+                stringBuilderAuthor.append(authors.get(i)).append(",");
             } else {
-                stringBuilder.append(authors.get(i));
+                stringBuilderAuthor.append(authors.get(i));
             }
         }
-        return "Id: " + id + " BookName: " + bookName + ", Authors: " + stringBuilder + ", Genre: "
-                + genre + ", Price: " + price + "$, NumberOfPages: " + numberOfPages;
+
+        for (int i = 0; i < genre.size(); i++) {
+            if (genre.size() > 1 && i != genre.size() - 1) {
+                stringBuilderGenre.append(genre.get(i)).append(",");
+            } else {
+                stringBuilderGenre.append(genre.get(i)).append(".");
+            }
+        }
+
+        return "Id: " + id + " BookName: " + bookName + ", Authors: " + stringBuilderAuthor + ", Genre: "
+                + stringBuilderGenre + ", Price: " + price + "$, NumberOfPages: " + numberOfPages;
     }
 }

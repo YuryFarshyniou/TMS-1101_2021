@@ -34,7 +34,7 @@ public class DOMParser {
                     Book book1 = new Book();
 
                     Node attribute = book.getAttributes().getNamedItem("Id");
-                    int id = Integer.parseInt(attribute.toString().replaceAll("\\D",""));
+                    int id = Integer.parseInt(attribute.toString().replaceAll("\\D", ""));
                     book1.setId(id);
 
                     NodeList bookChildNodes = book.getChildNodes();
@@ -62,12 +62,21 @@ public class DOMParser {
                         }
 
                         if (bookNode.getNodeName().equalsIgnoreCase("Genre")) {
-                            String gen = bookNode.getTextContent();
-                            for (Genre genre : Genre.values()) {
-                                if (genre.name().equalsIgnoreCase(gen)) {
-                                    book1.setGenre(genre);
+                            List<String> genreList = new ArrayList<>();
+                            NodeList genres = bookNode.getChildNodes();
+                            for (int k = 0; k < genres.getLength(); k++) {
+                                Node genreString = genres.item(k);
+                                if (genreString.getNodeType() != Node.TEXT_NODE) {
+                                    String gen = genreString.getTextContent();
+                                    for (Genre genre : Genre.values()) {
+                                        if (genre.name().equalsIgnoreCase(gen)) {
+                                            genreList.add(gen);
+                                            break;
+                                        }
+                                    }
                                 }
                             }
+                            book1.setGenre(genreList);
                         }
 
                         if (bookNode.getNodeName().equalsIgnoreCase("Price")) {

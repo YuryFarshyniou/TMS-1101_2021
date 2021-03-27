@@ -17,17 +17,17 @@ public class Main {
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 
         Library l = new Library();
-//        BookInserter bi = new BookInserter();
         DOMParser d = new DOMParser();
-//        Utils utils = new Utils();
+        Utils utils = new Utils();
         l.setLibrary(d.writeBooksFromXML(l));
+
 //        Validator validator = new Validator();
 //        System.out.println(validator.validateXML());
-//        View view = new View(utils,l);
-//        view.applicationMenu();
+        View view = new View(utils,l);
+        view.applicationMenu();
 
-        DataBase db = new DataBase();
-        db.connectionToDB(l);
+//        DataBase db = new DataBase();
+//        db.connectionToDB(l);
 
     }
 }

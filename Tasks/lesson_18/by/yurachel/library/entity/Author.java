@@ -50,6 +50,7 @@ public class Author {
 
     @Override
     public String toString() {
-        return "Id: " + id + ", Author's name: " + fullName;
+
+        return "Author's name: " + fullName;
     }
 }

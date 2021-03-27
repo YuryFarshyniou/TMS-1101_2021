@@ -69,7 +69,8 @@ public class Utils {
                 break;
             } else {
                 for (Book book : library) {
-                    if (genre.equalsIgnoreCase(book.getGenre().toString())) {
+                    for(String bookGenre: book.getGenre())
+                    if (genre.equalsIgnoreCase(bookGenre)) {
                         booksList.add(book);
                         match = true;
                     }
