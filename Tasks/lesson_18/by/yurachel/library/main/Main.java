@@ -19,12 +19,13 @@ public class Main {
         Library l = new Library();
         DOMParser d = new DOMParser();
         Utils utils = new Utils();
-        l.setLibrary(d.writeBooksFromXML(l));
+                l.setLibrary(d.writeBooksFromXML(l));
 
-//        Validator validator = new Validator();
-//        System.out.println(validator.validateXML());
-//        View view = new View(utils,l);
-//        view.applicationMenu();
+        Validator validator = new Validator();
+        System.out.println(validator.validateXML());
+
+        View view = new View(utils,l);
+        view.applicationMenu();
 
         DataBase db = new DataBase();
         db.connectionToDB(l);

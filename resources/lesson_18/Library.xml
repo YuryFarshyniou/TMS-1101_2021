@@ -3,8 +3,8 @@
     <Book Id="Id-1">
         <bookName>Fly</bookName>
         <Author>
-            <AuthorName>Author's name: Aaron Dembski-Bouden</AuthorName>
-            <AuthorName>Author's name: Ben Counter</AuthorName>
+            <AuthorName>Aaron Dembski-Bouden</AuthorName>
+            <AuthorName>Ben Counter</AuthorName>
         </Author>
         <Genre>
             <BookGenre>Horror</BookGenre>
@@ -16,7 +16,7 @@
     <Book Id="Id-2">
         <bookName>Horus Rising</bookName>
         <Author>
-            <AuthorName>Author's name: Adam E.R.</AuthorName>
+            <AuthorName>Adam E.R.</AuthorName>
         </Author>
         <Genre>
             <BookGenre>SCIENCE_FANTASY</BookGenre>
@@ -27,7 +27,7 @@
     <Book Id="Id-3">
         <bookName>Galaxy in Flames</bookName>
         <Author>
-            <AuthorName>Author's name: Ben Counter</AuthorName>
+            <AuthorName>Ben Counter</AuthorName>
         </Author>
         <Genre>
             <BookGenre>SCI_FI</BookGenre>

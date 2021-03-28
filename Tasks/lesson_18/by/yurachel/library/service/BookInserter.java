@@ -41,7 +41,7 @@ public class BookInserter {
 
             for (int i = 0; i < book1.getAuthors().size(); i++) {
                 Element bookAuthor = document.createElement("AuthorName");
-                bookAuthor.setTextContent(book1.getAuthors().get(i).toString());
+                bookAuthor.setTextContent(book1.getAuthors().get(i).getFullName());
 
                 author.appendChild(bookAuthor);
             }

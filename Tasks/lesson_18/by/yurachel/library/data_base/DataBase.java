@@ -19,52 +19,84 @@ public class DataBase {
         }
     }
 
-    public void connectionToDB(Library library)  {
+    public void connectionToDB(Library library) {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Library",
                 "Yurachel", "17092015GhjcnjRbrbhtr1823")) {
 
             insertBooks(connection, library.getLibrary());
-
-//            addAllBooks(connection);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-//    private void addAllBooks(Connection connection) throws SQLException {
-//
-//        String sql = "select b.id,b.book_name,b.price,b.number_of_pages,a.id,a.full_name,g.id, g.genres " +
-//                "from book b" +
-//                "         left join book_author ba on b.id = ba.book_id " +
-//                "         left join book_genre bg on b.id = bg.book_id " +
-//                "         left join authors a on ba.author_id = a.id " +
-//                "         left join genre g on bg.genre_id = g.id";
-//        Statement statement = connection.createStatement();
-//        ResultSet rs = statement.executeQuery(sql);
-//        Map<Book, List<Author>> books = new HashMap<>();
-//        while (rs.next()) {
-//            int bookId = rs.getInt(1);
-//            Optional<Book> bookOpt = books.keySet().stream().filter(book -> book.getId() == bookId).findFirst();
-//            if (bookOpt.isPresent()) {
-//                bookOpt.ifPresent(book -> book.getAuthors().add(createAuthor(rs)));
-//            } else {
-//                Genre bookGenre = null;
-//                for (Map.Entry entry : genres2.entrySet()) {
-//                    if (entry.getKey() == (Integer) rs.getInt(7)) {
-//                        bookGenre = (Genre) entry.getValue();
-//                        break;
-//                    }
-//                }
-//
-//                Book book = new Book(bookId, rs.getString(2), new ArrayList<>(Arrays.asList(createAuthor(rs))), bookGenre,
-//                        rs.getInt(3), rs.getInt(4));
-//
-//                books.put(book, book.getAuthors());
-//            }
-//        }
-//        System.out.println(books.keySet());
-//    }
+    private void addAllBooks(Connection connection) throws SQLException {
+
+        String sql = "select b.id,b.book_name,b.price,b.number_of_pages,a.id,a.full_name,g.id, g.genres " +
+                "from book b" +
+                "         left join book_author ba on b.id = ba.book_id " +
+                "         left join book_genre bg on b.id = bg.book_id " +
+                "         left join authors a on ba.author_id = a.id " +
+                "         left join genre g on bg.genre_id = g.id";
+
+
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        List<Book> books = new ArrayList<>();
+        while (rs.next()) {
+            int bookId = rs.getInt(1);
+            Optional<Book> bookOpt = books.stream().filter(book -> book.getId() == bookId).findFirst();
+
+            if (bookOpt.isPresent()) {
+                int authorId = rs.getInt(5);
+                boolean isPresent = false;
+                for (Book book : books) {
+                    for (Author author : book.getAuthors()) {
+                        if (authorId == author.getId()) {
+                            isPresent = true;
+                            break;
+                        }
+                    }
+                }
+
+                String genre = rs.getString(8);
+                boolean isPresentGenre = false;
+                for (Book book : books) {
+                    for (String bookGenre : book.getGenre()) {
+                        if (bookGenre.equalsIgnoreCase(genre)) {
+                            isPresentGenre = true;
+                            break;
+                        }
+                    }
+                }
+                if (!isPresent) {
+                    bookOpt.ifPresent(book -> book.getAuthors().add(createAuthor(rs)));
+                }
+                if (!isPresentGenre) {
+                    bookOpt.ifPresent(book -> book.getGenre().add(createGenre(rs)));
+                }
+            }
+
+
+            Book book = new Book(bookId, rs.getString(2), new ArrayList<>(Arrays.asList(createAuthor(rs))),
+                    new ArrayList<>(Arrays.asList(createGenre(rs))),
+                    rs.getInt(3), rs.getInt(4));
+
+            if (!bookOpt.isPresent()) {
+                books.add(book);
+
+            }
+        }
+    }
+
+    private String createGenre(ResultSet resultSet) {
+        try {
+            return resultSet.getString(8);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 
     private Author createAuthor(ResultSet rs) {
         try {
@@ -75,7 +107,6 @@ public class DataBase {
         }
         return new Author();
     }
-
 
     private void insertBooks(Connection connection, List<Book> books) throws SQLException {
         String sqlDeleteAllFromAuthors = "DELETE FROM authors";
@@ -142,9 +173,7 @@ public class DataBase {
             // Заносим значения в таблицу book_genre.
 
             PreparedStatement psBookGenre = connection.prepareStatement(sqlInsertBookGenre);
-
-
-            for(String genres:book.getGenre()){
+            for (String genres : book.getGenre()) {
                 psBookGenre.setInt(1, bookId);
                 int genreId = 0;
                 for (Map.Entry entry : genres2.entrySet()) {
@@ -157,8 +186,6 @@ public class DataBase {
                 psBookGenre.executeUpdate();
             }
 
-
-
             // Заносим значения в таблицу book_author.
 
             for (Integer key : authorsKeys) {
@@ -169,4 +196,5 @@ public class DataBase {
             }
         }
     }
+
 }
