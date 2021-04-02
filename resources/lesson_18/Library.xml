@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Library>
+    <Book Id="Id-1">
+        <bookName>Fly</bookName>
+        <Author>
+            <AuthorName>Aaron Dembski-Bouden</AuthorName>
+            <AuthorName>Ben Counter</AuthorName>
+        </Author>
+        <Genre>
+            <BookGenre>Horror</BookGenre>
+            <BookGenre>SCIENCE_FANTASY</BookGenre>
+        </Genre>
+        <Price>240</Price>
+        <numberOfPages>560</numberOfPages>
+    </Book>
+    <Book Id="Id-2">
+        <bookName>Horus Rising</bookName>
+        <Author>
+            <AuthorName>Adam E.R.</AuthorName>
+        </Author>
+        <Genre>
+            <BookGenre>SCIENCE_FANTASY</BookGenre>
+        </Genre>
+        <Price>99</Price>
+        <numberOfPages>345</numberOfPages>
+    </Book>
+    <Book Id="Id-3">
+        <bookName>Galaxy in Flames</bookName>
+        <Author>
+            <AuthorName>Ben Counter</AuthorName>
+        </Author>
+        <Genre>
+            <BookGenre>SCI_FI</BookGenre>
+        </Genre>
+        <Price>100</Price>
+        <numberOfPages>460</numberOfPages>
+    </Book>
+</Library>
