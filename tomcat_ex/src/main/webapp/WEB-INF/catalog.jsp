@@ -12,10 +12,12 @@
     <title>Products</title>
 </head>
 <body>
-<c:forEach var="product" items="${products}">
-    Title: ${product.name}
-    Price: ${product.price}
-    <br>
-</c:forEach>
+
+
+<%--<c:forEach var="product" items="${products}">--%>
+<%--    Title: ${product.name}--%>
+<%--    Price: ${product.price}--%>
+<%--    <br>--%>
+<%--</c:forEach>--%>
 </body>
 </html>
