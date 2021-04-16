@@ -1,12 +1,13 @@
-package by.yurachel.servlet.entity;
+package by.yurachel.servletExample.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class ProductEntity implements Serializable {
+public class Phone implements Serializable {
 
     private String name;
     private double price;
+    private String processor;
 
     public String getName() {
         return name;
@@ -24,29 +25,38 @@ public class ProductEntity implements Serializable {
         this.price = price;
     }
 
-    public ProductEntity(String name, double price) {
-        this.name = name;
-        this.price = price;
+    public String getProcessor() {
+        return processor;
     }
 
-    public ProductEntity() {
+    public void setProcessor(String processor) {
+        this.processor = processor;
+    }
+
+    public Phone(String name, double price, String processor) {
+        this.name = name;
+        this.price = price;
+        this.processor = processor;
+    }
+
+    public Phone() {
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ProductEntity that = (ProductEntity) o;
-        return Double.compare(that.price, price) == 0 && Objects.equals(name, that.name);
+        Phone phone = (Phone) o;
+        return Double.compare(phone.price, price) == 0 && Objects.equals(name, phone.name) && Objects.equals(processor, phone.processor);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, price);
+        return Objects.hash(name, price, processor);
     }
 
     @Override
     public String toString() {
-        return "name: " + name + ", price: " + price;
+        return "name: " + name + ", price: " + price + ", processor: " + processor;
     }
 }
