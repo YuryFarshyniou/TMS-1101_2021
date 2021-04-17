@@ -31,4 +31,8 @@ public class PhoneRepository {
     public void addProduct(Phone phone) {
         phones.add(phone);
     }
+    public void changePhoneParam(Phone phone){
+
+
+    }
 }

@@ -9,6 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Products</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -17,6 +18,12 @@
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col-8">
+
+            <a href="change" target="_blank">Edit</a>&nbsp &nbsp
+            <a href="change" target="_blank">Remove</a>&nbsp &nbsp
+            <a href="login" target="_blank">Login</a>&nbsp &nbsp
+            <a href="addPhone" target="_blank">Add new Phone</a>&nbsp &nbsp
+            <a href="admin" target="_blank">Admin page</a>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -34,17 +41,21 @@
                         <td>${phone.name}</td>
                         <td>${phone.price}</td>
                         <td>${phone.processor}</td>
+                        <td>
+                            <form action="change">
+                                <button type="submit"></button>
+                            </form>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
+
         </div>
-
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+            crossorigin="anonymous"></script>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-        crossorigin="anonymous"></script>
-
 </body>
 </html>
