@@ -41,11 +41,6 @@
                         <td>${phone.name}</td>
                         <td>${phone.price}</td>
                         <td>${phone.processor}</td>
-                        <td>
-                            <form action="change">
-                                <button type="submit"></button>
-                            </form>
-                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

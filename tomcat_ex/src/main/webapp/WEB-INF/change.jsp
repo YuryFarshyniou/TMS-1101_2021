@@ -17,17 +17,22 @@
         <div class="col-8">
             <form action="change" method="post">
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Name</label>
+                    <label for="exampleInputEmail1" class="form-label">Phone name to change</label>
+                    <input name="oldName" type="text" class="form-control" id="exampleInputEmail"
+                           aria-describedby="emailHelp" placeholder="Phone name to change">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">New Name</label>
                     <input name="name" type="text" class="form-control" id="exampleInputEmail1"
-                           aria-describedby="emailHelp" placeholder="Name">
+                           aria-describedby="emailHelp" placeholder="New Name">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Price</label>
-                    <input name="price" type="text" class="form-control" id="exampleInputPassword1" placeholder="Price">
+                    <label for="exampleInputPassword1" class="form-label">New Price</label>
+                    <input name="price" type="text" class="form-control" id="exampleInputPassword1" placeholder="New Price">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Processor</label>
-                    <input name="processor" type="text" class="form-control" id="exampleInput" placeholder="Processor">
+                    <label for="exampleInputPassword1" class="form-label">New Processor</label>
+                    <input name="processor" type="text" class="form-control" id="exampleInput" placeholder="New Processor">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
