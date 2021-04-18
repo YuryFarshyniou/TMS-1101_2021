@@ -19,11 +19,11 @@
     <div class="row justify-content-md-center">
         <div class="col-8">
 
-            <a href="change" target="_blank">Edit</a>&nbsp &nbsp
-            <a href="change" target="_blank">Remove</a>&nbsp &nbsp
-            <a href="login" target="_blank">Login</a>&nbsp &nbsp
-            <a href="addPhone" target="_blank">Add new Phone</a>&nbsp &nbsp
-            <a href="admin" target="_blank">Admin page</a>
+            <a href="change" target="_self">Edit</a>&nbsp &nbsp
+            <a href="remove" target="_self">Remove</a>&nbsp &nbsp
+            <a href="login" target="_self">Login</a>&nbsp &nbsp
+            <a href="addPhone" target="_self">Add new Phone</a>&nbsp &nbsp
+            <a href="admin" target="_self">Admin page</a>
             <table class="table table-striped">
                 <thead>
                 <tr>
