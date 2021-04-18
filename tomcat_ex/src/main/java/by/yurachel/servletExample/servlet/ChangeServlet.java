@@ -21,22 +21,10 @@ public class ChangeServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Phone pe = new Phone(req.getParameter("name"), Double.parseDouble(req.getParameter("price")), req.getParameter("processor"));
-        String phoneName = req.getParameter("oldName");
-        boolean phoneExists = false;
-        int index = 0;
-        for (Phone phone : pr.getPhones()) {
-            if (phone.getName().equalsIgnoreCase(phoneName)) {
-                phoneExists = true;
-                index = pr.getPhones().indexOf(phone);
-                break;
-            }
-        }
-        if (phoneExists) {
-            pr.getPhones().set(index, pe);
-        }
-
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        Phone newPhone = new Phone(req.getParameter("name"), Double.parseDouble(req.getParameter("price")), req.getParameter("processor"));
+        String oldPhoneName = req.getParameter("oldName");
+        pr.changePhoneParam(newPhone,oldPhoneName);
         resp.sendRedirect("catalog");
     }
 }

@@ -23,7 +23,7 @@ public class RemoveServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String phoneName = req.getParameter("name");
-        pr.getPhones().removeIf(x -> x.getName().equalsIgnoreCase(phoneName));
+        pr.removePhone(phoneName);
        resp.sendRedirect("catalog");
     }
 }

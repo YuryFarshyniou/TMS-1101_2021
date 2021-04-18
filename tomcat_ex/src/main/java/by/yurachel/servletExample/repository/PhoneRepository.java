@@ -31,8 +31,23 @@ public class PhoneRepository {
     public void addProduct(Phone phone) {
         phones.add(phone);
     }
-    public void changePhoneParam(Phone phone){
 
+    public void changePhoneParam(Phone newPhone, String oldPhoneName) {
+        boolean phoneExists = false;
+        int index = 0;
+        for (Phone phone : phones) {
+            if (phone.getName().equalsIgnoreCase(oldPhoneName)) {
+                phoneExists = true;
+                index = phones.indexOf(phone);
+                break;
+            }
+        }
+        if (phoneExists) {
+            phones.set(index, newPhone);
+        }
+    }
 
+    public void removePhone(String phoneName) {
+        phones.removeIf(x -> x.getName().equalsIgnoreCase(phoneName));
     }
 }
