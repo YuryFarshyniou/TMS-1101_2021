@@ -30,10 +30,10 @@
             <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
 
-        <!-- Remind Passowrd -->
-        <div id="formFooter">
-            <a class="underlineHover" href="#">Forgot Password?</a>
-        </div>
+<%--        <!-- Remind Passowrd -->--%>
+<%--        <div id="formFooter">--%>
+<%--            <a class="underlineHover" href="#">Forgot Password?</a>--%>
+<%--        </div>--%>
 
     </div>
 </div>

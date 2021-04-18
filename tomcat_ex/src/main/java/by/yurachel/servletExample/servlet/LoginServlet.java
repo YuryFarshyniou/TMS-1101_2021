@@ -50,6 +50,6 @@ public class LoginServlet extends HttpServlet {
         HttpSession hs = req.getSession(true);
         hs.setAttribute("username", login);
 
-        resp.sendRedirect("catalog");
+        resp.sendRedirect("home");
     }
 }

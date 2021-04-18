@@ -15,15 +15,42 @@
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
 <body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="home">MobileStore</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin">admin page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login">login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="catalog">catalog</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Action
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="change">Edit Phone</a></li>
+                            <li><a class="dropdown-item" href="remove">Remove phone</a></li>
+                            <li><a class="dropdown-item" href="new-phone">Add new phone</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col-8">
-
-            <a href="change" target="_self">Edit</a>&nbsp &nbsp
-            <a href="remove" target="_self">Remove</a>&nbsp &nbsp
-            <a href="login" target="_self">Login</a>&nbsp &nbsp
-            <a href="addPhone" target="_self">Add new Phone</a>&nbsp &nbsp
-            <a href="admin" target="_self">Admin page</a>
             <table class="table table-striped">
                 <thead>
                 <tr>
