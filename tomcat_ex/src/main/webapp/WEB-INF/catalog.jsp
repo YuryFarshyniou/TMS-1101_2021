@@ -40,7 +40,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="change">Edit Phone</a></li>
                             <li><a class="dropdown-item" href="remove">Remove phone</a></li>
-                            <li><a class="dropdown-item" href="new-phone">Add new phone</a></li>
+                            <li><a class="dropdown-item" href="addPhone">Add new phone</a></li>
                         </ul>
                     </li>
                 </ul>
