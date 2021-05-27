@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Devices>
+    <Device Id="id-1">
+        <Name>Asus GeForce RXT 3080Ti</Name>
+        <Origin>USA</Origin>
+        <Price n="USD">800</Price>
+        <Type>
+            <Peripheral>false</Peripheral>
+            <PowerUsage>250</PowerUsage>
+            <Cooler>true</Cooler>
+            <Group>VideoCard</Group>
+            <Port>Usb Dvi</Port>
+        </Type>
+        <Critical>true</Critical>
+    </Device>
+    <Device Id="id-2">
+        <Name>Ryzen 3600</Name>
+        <Origin>USA</Origin>
+        <Price n="USD">350</Price>
+        <Type>
+            <Peripheral>false</Peripheral>
+            <PowerUsage>100</PowerUsage>
+            <Cooler>false</Cooler>
+            <Group>CPU</Group>
+            <Port> </Port>
+        </Type>
+        <Critical>true</Critical>
+    </Device>
+</Devices>
+
+
+
+
+
+
+
+
+
