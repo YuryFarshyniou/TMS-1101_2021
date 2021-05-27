@@ -7,7 +7,7 @@
 *.iml
 
 .idea
-
+hibernate/target
 out
 
 # BlueJ files
