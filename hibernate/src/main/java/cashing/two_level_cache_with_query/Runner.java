@@ -1,27 +1,12 @@
-package cashing;
+package cashing.two_level_cache_with_query;
 
-//Alien alien1 = new Alien();
-//        alien1.setId(1);
-//        alien1.setName("Yura");
-//        alien1.setColor("Blue");
-//        Alien alien2 = new Alien();
-//        alien2.setId(2);
-//        alien2.setName("Vik");
-//        alien2.setColor("Blac");
-//
-//        Alien alien3 = new Alien();
-//        alien3.setId(3);
-//        alien3.setName("Boba");
-//        alien3.setColor("White");
-//session.save(alien1);
-//        session.save(alien2);
-//        session.save(alien3);
-
+import cashing.Alien;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 public class Runner {
     public static void main(String[] args) {
@@ -36,14 +21,20 @@ public class Runner {
 
         session.beginTransaction();
 
-        alien = session.get(Alien.class, 1);
+        Query query = session.createQuery("from Alien where id=2 ");
+        query.setCacheable(true);
+        alien = (Alien) query.uniqueResult();
+
         System.out.println(alien);
         session.getTransaction().commit();
         session.close();
-        Session session2 = factory.openSession();
 
+        Session session2 = factory.openSession();
         session2.beginTransaction();
-        alien = session2.get(Alien.class, 1);
+        Query query2 = session2.createQuery("from Alien where id=2 ");
+        query2.setCacheable(true);
+
+        alien = (Alien) query2.uniqueResult();
         System.out.println(alien);
         session2.getTransaction().commit();
         session2.close();

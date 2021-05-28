@@ -1,6 +1,6 @@
-package dao;
+package tms_ex.dao;
 
-import entity.Book;
+import tms_ex.entity.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;

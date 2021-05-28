@@ -1,8 +1,8 @@
-package main;
+package tms_ex.main;
 
-import dao.Dao;
-import entity.Author;
-import entity.Book;
+import tms_ex.dao.Dao;
+import tms_ex.entity.Author;
+import tms_ex.entity.Book;
 
 public class HibernateRunner {
     public static void main(String[] args) {
@@ -21,7 +21,7 @@ public class HibernateRunner {
         dao.init();
         dao.save(book);
 
-//        List<Event> list = dao.getAll();
+//        List<Event> list = tms_ex.dao.getAll();
 //        System.out.println(list);
 
 

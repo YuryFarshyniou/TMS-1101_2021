@@ -1,4 +1,4 @@
-package entity;
+package tms_ex.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
